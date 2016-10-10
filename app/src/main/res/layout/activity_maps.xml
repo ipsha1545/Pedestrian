@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout android:id="@+id/top"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".2"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        android:background="#4285F4">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight=".8"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+        <!--<TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv" />-->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".2"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".3"
+            android:id="@+id/autocomplete"
+            android:text="500 L st, sacramento"
+            android:layout_marginLeft="15dip"
+            android:paddingLeft="7dp"
+            android:textColor="#FFF"
+            android:background="@drawable/edittext_bg"
+            />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".1"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".3"
+            android:id="@+id/autocomplete2"
+            android:text="Amtrak Station, Sacramento"
+            android:layout_marginLeft="15dip"
+            android:paddingLeft="7dp"
+            android:textColor="#FFF"
+            android:background="@drawable/edittext_bg"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".1"/>
+
+        </LinearLayout>
+
+
+            <Button android:id="@+id/btn_signup"
+                android:layout_width="0dp"
+                android:layout_weight=".2"
+                android:layout_height="match_parent"
+                android:text="Find Route"
+                android:layout_gravity="center_vertical"
+                android:background="#4285F4"
+                android:textColor="@android:color/white"/>
+    </LinearLayout>
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".8"
+        tools:context="com.example.pedestrian.MapsActivity" >
+
+    </fragment>
+
+
+
+
+
+
+    </LinearLayout>
