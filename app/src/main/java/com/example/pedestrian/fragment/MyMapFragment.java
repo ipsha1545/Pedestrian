@@ -106,36 +106,40 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_maps,container, false);
 
-        autocompleteView = (EditText)view.findViewById(R.id.autocomplete);
-        autocompleteView2 = (EditText)view.findViewById(R.id.autocomplete2);
-        find = (Button) view.findViewById(R.id.btn_signup);
+        try {
+            autocompleteView = (EditText) view.findViewById(R.id.autocomplete);
+            autocompleteView2 = (EditText) view.findViewById(R.id.autocomplete2);
+            find = (Button) view.findViewById(R.id.btn_signup);
 
-        if(!Preferences.getSettingsParam("source").equals("")){
-            autocompleteView.setText(Preferences.getSettingsParam("source"));
+            if (!Preferences.getSettingsParam("source").equals("")) {
+                autocompleteView.setText(Preferences.getSettingsParam("source"));
+            }
+
+            if (!Preferences.getSettingsParam("destination").equals("")) {
+                autocompleteView2.setText(Preferences.getSettingsParam("destination"));
+            }
+
+            crosswalks = new ArrayList<Crosswalks>();
+
+            // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+            mapFragment = (SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.map);
+
+
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+
+            client = new GoogleApiClient.Builder(getActivity()).addApi(AppIndex.API).build();
+
+            proximityReceiver = new ProximityReciever();
+            getActivity().registerReceiver(proximityReceiver, new IntentFilter(ACTION_FILTER));
+
+
+            find.setOnClickListener(this);
+
+            findRoute();
+        } catch (Exception e){
+            GlobalUtils.writeLogFile("Error in Map Fragment " + e.getMessage());
         }
-
-        if(!Preferences.getSettingsParam("destination").equals("")){
-            autocompleteView2.setText(Preferences.getSettingsParam("destination"));
-        }
-
-        crosswalks = new ArrayList<Crosswalks>();
-
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        mapFragment = (SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.map);
-
-
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-
-        client = new GoogleApiClient.Builder(getActivity()).addApi(AppIndex.API).build();
-
-        proximityReceiver = new ProximityReciever();
-        getActivity().registerReceiver(proximityReceiver, new IntentFilter(ACTION_FILTER));
-
-
-        find.setOnClickListener(this);
-
-        findRoute();
 
         return view;
 
@@ -148,69 +152,73 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
 
     private void findRoute() {
 
-        GlobalUtils.writeLogFile("Find route Button clicked");
-        if (autocompleteView.getText().toString().equals("")) {
-            autocompleteView.setError("This cant be empty");
-            return;
-        } else {
-            src2 = autocompleteView.getText().toString();
-            Preferences.setSettingsParam("source", src2);
-        }
-
-        if (autocompleteView2.getText().toString().equals("")) {
-            autocompleteView2.setError("This cant be empty");
-            return;
-        } else {
-            dest2 = autocompleteView2.getText().toString();
-            Preferences.setSettingsParam("destination", dest2);
-        }
-
-        if (GlobalUtils.isLocationAllowed() && GlobalUtils.isExternalStorageAllowed()) {
-
-            src = src2;  // get data from intent
-            dest = dest2;// get data from intent
-            radius = 20;
-
-            if (radius == 0) {
-                Toast.makeText(getActivity(), "Radius cant be 0, minimum value is 1", Toast.LENGTH_SHORT).show();
-                //finish();
-            }
-
-            srcdest = new String[2];
-            srcdest[0] = src;
-            srcdest[1] = dest;
-
-
-            //Parse Crosswalk file and feed data.
-            crosswalks = GlobalUtils.getCrossWalkPoints();
-
-            // for proximity
-            //getActivity().registerReceiver(proximityReceiver, new IntentFilter(ACTION_FILTER));
-            lm = (LocationManager) getActivity().getSystemService(getActivity().LOCATION_SERVICE);
-
-            try {
-                lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 10, this);
-            } catch (Exception e) {
-               // finish();
-            }
-
-            //Setting up My Broadcast Intent
-            Intent i = new Intent(ACTION_FILTER);
-            pi = PendingIntent.getBroadcast(getActivity().getApplicationContext(), -1, i, 0);
-
-            //setting up proximituMethod
-            if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        try {
+            GlobalUtils.writeLogFile("Find route Button clicked");
+            if (autocompleteView.getText().toString().equals("")) {
+                autocompleteView.setError("This cant be empty");
                 return;
+            } else {
+                src2 = autocompleteView.getText().toString();
+                Preferences.setSettingsParam("source", src2);
             }
 
-            client = new GoogleApiClient.Builder(getActivity()).addApi(AppIndex.API).build();
-            mapFragment.getMapAsync(this);
+            if (autocompleteView2.getText().toString().equals("")) {
+                autocompleteView2.setError("This cant be empty");
+                return;
+            } else {
+                dest2 = autocompleteView2.getText().toString();
+                Preferences.setSettingsParam("destination", dest2);
+            }
 
-            return;
-        } else if (GlobalUtils.isLocationAllowed() == false && GlobalUtils.isExternalStorageAllowed() == true) {
-           requestLocationPermission();
-        } else if (GlobalUtils.isExternalStorageAllowed() == false) {
-           requestStoragePermission();
+            if (GlobalUtils.isLocationAllowed() && GlobalUtils.isExternalStorageAllowed()) {
+
+                src = src2;  // get data from intent
+                dest = dest2;// get data from intent
+                radius = 20;
+
+            /*if (radius == 0) {
+              //  Toast.makeText(getActivity(), "Radius cant be 0, minimum value is 1", Toast.LENGTH_SHORT).show();
+                //finish();
+            }*/
+
+                srcdest = new String[2];
+                srcdest[0] = src;
+                srcdest[1] = dest;
+
+
+                //Parse Crosswalk file and feed data.
+                crosswalks = GlobalUtils.getCrossWalkPoints();
+
+                // for proximity
+                //getActivity().registerReceiver(proximityReceiver, new IntentFilter(ACTION_FILTER));
+                lm = (LocationManager) getActivity().getSystemService(getActivity().LOCATION_SERVICE);
+
+                try {
+                    lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 10, this);
+                } catch (Exception e) {
+                    // finish();
+                }
+
+                //Setting up My Broadcast Intent
+                Intent i = new Intent(ACTION_FILTER);
+                pi = PendingIntent.getBroadcast(getActivity().getApplicationContext(), -1, i, 0);
+
+                //setting up proximituMethod
+                if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+
+                client = new GoogleApiClient.Builder(getActivity()).addApi(AppIndex.API).build();
+                mapFragment.getMapAsync(this);
+
+                return;
+            } else if (GlobalUtils.isLocationAllowed() == false && GlobalUtils.isExternalStorageAllowed() == true) {
+                requestLocationPermission();
+            } else if (GlobalUtils.isExternalStorageAllowed() == false) {
+                requestStoragePermission();
+            }
+        }catch (Exception e){
+            GlobalUtils.writeLogFile("Exception in find Route " + e.getMessage());
         }
     }
 
@@ -223,9 +231,13 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
     @Override
     public void onPause() {
         super.onPause();
-        if (progressDialog != null)
-            progressDialog.dismiss();
-//        getActivity().unregisterReceiver(proximityReceiver);
+        try {
+            if (progressDialog != null)
+                progressDialog.dismiss();
+        }catch (Exception e){
+            GlobalUtils.writeLogFile("Exception in onPause " + e.getMessage());
+        }
+
     }
 
     private void requestLocationPermission() {
@@ -245,54 +257,30 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
         ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, External_PERMISSION_CODE);
     }
 
-
-    /*@Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        switch (requestCode) {
-            case REQUEST_ENABLE_BT:
-                if (resultCode == Activity.RESULT_CANCELED) {
-
-                    GlobalUtils.writeLogFile("BLE is not enabled on your device");
-                    System.out.println("BLE is not enabled on your device");
-                    //finish();
-                    System.exit(0);
-                }
-
-            case DISCOVERABLE_REQUEST_CODE:
-                if (resultCode == Activity.RESULT_CANCELED) {
-                    GlobalUtils.writeLogFile("Your device is not discoverable to others");
-                    System.out.println("Your device is not discoverable to others");
-                    //finish();
-                    System.exit(0);
-                }
-        }
-
-        Intent intent = new Intent(getContext(), Myservice.class);
-        getContext().startService(intent);
-    }*/
-
     @Override
     public void onLocationChanged(Location location) {
-        double latitude = location.getLatitude();
-        double longitude = location.getLongitude();
 
-        Toast.makeText(getActivity(), "Onlocation change called", Toast.LENGTH_SHORT).show();
+        try {
+            double latitude = location.getLatitude();
+            double longitude = location.getLongitude();
 
-        GlobalUtils.writeLogFile("OnLocationChange listener called ");
-        GlobalUtils.writeLogFile("Current latitude " + latitude);
-        GlobalUtils.writeLogFile("Current longitude " + longitude);
 
-        // Creating a LatLng object for the current location
-        LatLng latLng = new LatLng(latitude, longitude);
+            GlobalUtils.writeLogFile("OnLocationChange listener called ");
+            GlobalUtils.writeLogFile("Current latitude " + latitude);
+            GlobalUtils.writeLogFile("Current longitude " + longitude);
 
-        Preferences.setSettingsParam("latitude", latitude + "");
-        Preferences.setSettingsParam("longitude", longitude + "");
+            // Creating a LatLng object for the current location
+            LatLng latLng = new LatLng(latitude, longitude);
 
-        // Showing the current location in Google Map
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+            Preferences.setSettingsParam("latitude", latitude + "");
+            Preferences.setSettingsParam("longitude", longitude + "");
+
+            // Showing the current location in Google Map
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+        } catch (Exception e){
+            GlobalUtils.writeLogFile("Error in onlocation change listener " + e.getMessage());
+        }
 
         // Reroute
         /*LatLng point = new LatLng(latitude, longitude);
@@ -341,54 +329,67 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
     public void onStart() {
         super.onStart();
 
-        client.connect();
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "Maps Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app URL is correct.
-                Uri.parse("android-app://com.example.pedestrian/http/host/path")
-        );
-        AppIndex.AppIndexApi.start(client, viewAction);
+        try {
+            client.connect();
+            Action viewAction = Action.newAction(
+                    Action.TYPE_VIEW, // TODO: choose an action type.
+                    "Maps Page", // TODO: Define a title for the content shown.
+                    // TODO: If you have web page content that matches this app activity's content,
+                    // make sure this auto-generated web page URL is correct.
+                    // Otherwise, set the URL to null.
+                    Uri.parse("http://host/path"),
+                    // TODO: Make sure this auto-generated app URL is correct.
+                    Uri.parse("android-app://com.example.pedestrian/http/host/path")
+            );
+            AppIndex.AppIndexApi.start(client, viewAction);
+        } catch (Exception e){
+            GlobalUtils.writeLogFile("Exception in Proximity " + e.getMessage());
+        }
     }
 
     @Override
     public void onStop() {
         super.onStop();
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "Maps Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app URL is correct.
-                Uri.parse("android-app://com.example.pedestrian/http/host/path")
-        );
-        AppIndex.AppIndexApi.end(client, viewAction);
-        client.disconnect();
+        try {
+            // ATTENTION: This was auto-generated to implement the App Indexing API.
+            // See https://g.co/AppIndexing/AndroidStudio for more information.
+            Action viewAction = Action.newAction(
+                    Action.TYPE_VIEW, // TODO: choose an action type.
+                    "Maps Page", // TODO: Define a title for the content shown.
+                    // TODO: If you have web page content that matches this app activity's content,
+                    // make sure this auto-generated web page URL is correct.
+                    // Otherwise, set the URL to null.
+                    Uri.parse("http://host/path"),
+                    // TODO: Make sure this auto-generated app URL is correct.
+                    Uri.parse("android-app://com.example.pedestrian/http/host/path")
+            );
+            AppIndex.AppIndexApi.end(client, viewAction);
+            client.disconnect();
+        } catch (Exception e){
+            GlobalUtils.writeLogFile("Exception in onStop " + e.getMessage());
+        }
 
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-        MapsTask mapsTask = new MapsTask();
+        try {
+            mMap = googleMap;
+            MapsTask mapsTask = new MapsTask();
 
-        if (GlobalUtils.isNetworkAvailable()) {
-            mapsTask.execute(srcdest);
-            // Add a marker in Sydney and move the camera
-        } else {
-            Toast.makeText(getActivity(), "Internet not available, Please connect", Toast.LENGTH_SHORT).show();
-            //finish();
+            if (GlobalUtils.isNetworkAvailable()) {
+                mapsTask.execute(srcdest);
+                // Add a marker in Sydney and move the camera
+            } else {
+                // Toast.makeText(getActivity(), "Internet not available, Please connect", Toast.LENGTH_SHORT).show();
+                //finish();
+            }
+        } catch (Exception e){
+            GlobalUtils.writeLogFile("Error onMaoReady " + e.getMessage());
         }
     }
+
     private GoogleMap mMap;
 
     @Override
@@ -410,34 +411,20 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
         @Override
         public void onReceive(Context context, Intent intent) {
 
-            // Key for determining whether user is leaving or entering
-            String key = LocationManager.KEY_PROXIMITY_ENTERING;
+            try {
+                // Key for determining whether user is leaving or entering
+                String key = LocationManager.KEY_PROXIMITY_ENTERING;
 
-            //Gives whether the user is entering or leaving in boolean form
-            boolean state = intent.getBooleanExtra(key, false);
+                //Gives whether the user is entering or leaving in boolean form
+                boolean state = intent.getBooleanExtra(key, false);
 
-            if (state) {
-                /*Toast toast = Toast.makeText(context, "You are near a cross walk", Toast.LENGTH_LONG);
-                LinearLayout toastLayout = (LinearLayout) toast.getView();
-                TextView toastTV = (TextView) toastLayout.getChildAt(0);
-                toastTV.setTextSize(25);
-                toastTV.setBackgroundColor(Color.BLUE);
-                toastTV.setTextColor(Color.WHITE);
-                toast.show();*/
-
-                showToast(MapsActivity.mContext, "Beware !!", "You are near a Crosswalk", R.drawable.crosswalk, R.drawable.blue_alert);
-
-            } else {
-                //Other custom Notification
-                // Log.i("MyTag", "Thank you for visiting my Area,come back again !!");
-                /*Toast toast = Toast.makeText(context, "Thank you for visiting my Area,come back again !!", Toast.LENGTH_LONG);
-                LinearLayout toastLayout = (LinearLayout) toast.getView();
-                TextView toastTV = (TextView) toastLayout.getChildAt(0);
-                toastTV.setTextSize(25);
-                toastTV.setTextColor(Color.BLUE);
-                toast.show();*/
-
-                showToast(MapsActivity.mContext, "Thank you for visiting my Area", "Come back again !!", R.drawable.crosswalk, R.drawable.blue_alert);
+                if (state) {
+                    showToast(MapsActivity.mContext, "Message !!", "You are near a Crosswalk", R.drawable.crosswalk, R.drawable.blue_alert);
+                } else {
+                    showToast(MapsActivity.mContext, "Thank you for visiting my Area", "Come back again !!", R.drawable.crosswalk, R.drawable.blue_alert);
+                }
+            } catch (Exception e){
+                GlobalUtils.writeLogFile("Exception in Proximity " + e.getMessage());
             }
         }
     }
@@ -455,8 +442,6 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
 
             String response = Curl.getInSeparateThread("http://rsin-nisbnvm.india.rsystems.com/DemoAPI/api/device" + "/" + i);
 
-            GlobalUtils.writeLogFile("URL for heatmap " + "http://rsin-nisbnvm.india.rsystems.com/DemoAPI/api/device/1");
-
             GlobalUtils.writeLogFile("Response from server for heat map: " + response);
 
             list = GlobalUtils.readItems(response);
@@ -468,9 +453,8 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
             // Add a tile overlay to the map, using the heat map tile provider.
             mMap.addTileOverlay(new TileOverlayOptions().tileProvider(provider));
 
-
         } catch (Exception e) {
-            e.printStackTrace();
+            GlobalUtils.writeLogFile("Exception in addHeatMap " + e.getMessage());
         }
     }
 
@@ -485,18 +469,7 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
             String source = srcdest[0];
             String destination = srcdest[1];
 
-            if (!GlobalUtils.isNetworkAvailable()) {
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(getActivity(), "Network not available", Toast.LENGTH_LONG).show();
-                        return;
-                    }
-                });
-            }
-
             try {
-
                 latLngSrc = GlobalUtils.getLocationFromAddress(source.trim());
                 if (latLngSrc != null) {
                     sourceLat = latLngSrc.latitude;
@@ -548,13 +521,13 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
 
                 GlobalUtils.writeLogFile("Exception in AsyncTask " + e.getMessage());
 
-                getActivity().runOnUiThread(new Runnable() {
+                /*getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         Toast.makeText(getActivity(), error, Toast.LENGTH_LONG).show();
 
                     }
-                });
+                });*/
             }
 
             if (latLngSrc != null & latLngDest != null) {
@@ -579,8 +552,6 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
         protected void onPostExecute(ArrayList<LatLng> directionPoint) {
 
             try {
-
-
                 if (directionPoint != null) {
 
                     GlobalUtils.writeLogFile("OnPostExecute start ");
@@ -643,6 +614,7 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
                 Toast.makeText(getActivity(), "Number Format Exception", Toast.LENGTH_LONG).show();
             } catch (Exception e){
                 Toast.makeText(getActivity(), e.getMessage() , Toast.LENGTH_LONG).show();
+                GlobalUtils.writeLogFile("Exception in PostExecute Method " + e.getMessage());
             }
         }
 

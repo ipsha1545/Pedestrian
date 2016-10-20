@@ -14,9 +14,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-/**
- * Created by Mohit.Aggarwal on 9/13/2016.
- */
+
 public class PlaceAPI {
 
     private static final String TAG = PlaceAPI.class.getSimpleName();

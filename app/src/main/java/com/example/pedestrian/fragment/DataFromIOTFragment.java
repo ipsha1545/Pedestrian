@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pedestrian.R;
+import com.example.pedestrian.utils.GlobalUtils;
 import com.example.pedestrian.utils.Preferences;
 
 import java.util.ArrayList;
@@ -39,30 +40,33 @@ public class DataFromIOTFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.data_from_iot, container, false);
+        View view = null;
+        try {
 
-        final TextView tv_list_from_iot = (TextView) view.findViewById(R.id.list_from_iot);
+            view = inflater.inflate(R.layout.data_from_iot, container, false);
 
-        Button refreshData = (Button) view.findViewById(R.id.refreshData);
-        Button clearData = (Button) view.findViewById(R.id.clearData);
+            final TextView tv_list_from_iot = (TextView) view.findViewById(R.id.list_from_iot);
 
-        StringBuffer stringBuffer = new StringBuffer();
-        Set<String> set = Preferences.getStringSet("list");
-        if (set != null) {
-            List sortedList = new ArrayList(set);
-            Collections.sort(sortedList);
-            Iterator iterator = sortedList.iterator();
-            // check values
-            while (iterator.hasNext()) {
-                stringBuffer.append(iterator.next() + "\n\n");
+            Button refreshData = (Button) view.findViewById(R.id.refreshData);
+            Button clearData = (Button) view.findViewById(R.id.clearData);
+
+            StringBuffer stringBuffer = new StringBuffer();
+            Set<String> set = Preferences.getStringSet("list");
+            if (set != null) {
+                List sortedList = new ArrayList(set);
+                Collections.sort(sortedList);
+                Iterator iterator = sortedList.iterator();
+                // check values
+                while (iterator.hasNext()) {
+                    stringBuffer.append(iterator.next() + "\n\n");
+                }
+                tv_list_from_iot.setText(stringBuffer);
             }
-            tv_list_from_iot.setText(stringBuffer);
-        }
 
 
-        refreshData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            refreshData.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
                 try {
                     StringBuffer stringBuffer = new StringBuffer();
@@ -83,29 +87,25 @@ public class DataFromIOTFragment extends Fragment {
                         tv_list_from_iot.setText(stringBuffer);
                     }
 
-                } catch (Exception e){
-
+                } catch (Exception e) {
+                    GlobalUtils.writeLogFile("Exception in refresh data " + e.getMessage());
                 }
+                }
+            });
 
-        }
-        });
-
-
-        clearData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
+            clearData.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
                 Preferences.setStringArray("list", new LinkedHashSet<String>());
-
                 tv_list_from_iot.setText("");
+                }
+            });
 
-            }
-        });
-
-
+        } catch (Exception e){
+            GlobalUtils.writeLogFile("Exception in Data From IOT " + e.getMessage());
+        }
 
         return view;
-
     }
 
     @Override

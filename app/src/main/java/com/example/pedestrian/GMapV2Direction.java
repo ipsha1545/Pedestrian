@@ -1,8 +1,6 @@
 package com.example.pedestrian;
 
-/**
- * Created by Mohit.Aggarwal on 9/8/2016.
- */
+
 import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;

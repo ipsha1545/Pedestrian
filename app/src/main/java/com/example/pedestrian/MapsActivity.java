@@ -145,78 +145,59 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         container = (FrameLayout) findViewById(R.id.container);
         //GlobalUtils.clearLogFile();
 
-        fragmentManager=getSupportFragmentManager();
-        FragmentTransaction  fragmentTransaction=fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.container,new MyMapFragment()).commit();
+        try {
 
-        GlobalUtils.writeLogFile("*********Application  started*****************");
-       // proximityReceiver = new ProximityReciever();
+            fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container, new MyMapFragment()).commit();
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        initNavigationDrawer();
+            GlobalUtils.writeLogFile("*********Application  started*****************");
+            // proximityReceiver = new ProximityReciever();
+
+            toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+            initNavigationDrawer();
 
 
-        statusCheck();
+            statusCheck();
 
-        mContext = this;
+            mContext = this;
 
-        /*find = (Button) findViewById(R.id.btn_signup);
-
-        find.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                findRoute();
-
-                try {
-                    InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-                } catch (Exception e) {
-                }
+            //check for bluetooth support
+            BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+            if (mBluetoothAdapter == null) {
+                GlobalUtils.writeLogFile("BLE does not support");
+                Toast.makeText(this, "BLE does not support", Toast.LENGTH_SHORT).show();
+                finish();
+                return;
             }
-        });*/
 
-       // autocompleteView = (EditText) findViewById(R.id.autocomplete);
-      //  autocompleteView2 = (EditText) findViewById(R.id.autocomplete2);
+            //enabling bluetooth
+            if (!mBluetoothAdapter.isEnabled()) {
+                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
 
-       // crosswalks = new ArrayList<Crosswalks>();
+            }
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-       /// mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-
-       // StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-       // StrictMode.setThreadPolicy(policy);
-
-       // client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-
-        //check for bluetooth support
-        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        if (mBluetoothAdapter == null) {
-            GlobalUtils.writeLogFile("BLE does not support");
-            Toast.makeText(this, "BLE does not support", Toast.LENGTH_SHORT).show();
-            finish();
-            return;
+            //enabling discoverability
+            Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+            discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 0);
+            startActivityForResult(discoverableIntent, DISCOVERABLE_REQUEST_CODE);
+        } catch (Exception e){
+            GlobalUtils.writeLogFile("Exception in MapsActivity " + e.getMessage());
         }
-
-        //enabling bluetooth
-        if (!mBluetoothAdapter.isEnabled()) {
-            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-
-        }
-
-        //enabling discoverability
-        Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-        discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 0);
-        startActivityForResult(discoverableIntent, DISCOVERABLE_REQUEST_CODE);
     }
 
 
     public void statusCheck() {
-        final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        try {
+            final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-        if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            buildAlertMessageNoGps();
+            if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                buildAlertMessageNoGps();
+            }
+        } catch (Exception e){
+            GlobalUtils.writeLogFile("Exception in statuscheck " + e.getMessage());
         }
     }
 
@@ -254,75 +235,40 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }*/
     }
 
-
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        try {
 
-        switch (requestCode) {
-            case REQUEST_ENABLE_BT:
-                if (resultCode == Activity.RESULT_CANCELED) {
+            switch (requestCode) {
+                case REQUEST_ENABLE_BT:
+                    if (resultCode == Activity.RESULT_CANCELED) {
 
-                    GlobalUtils.writeLogFile("BLE is not enabled on your device");
-                    System.out.println("BLE is not enabled on your device");
-                    finish();
-                    System.exit(0);
-                }
+                        GlobalUtils.writeLogFile("BLE is not enabled on your device");
+                        System.out.println("BLE is not enabled on your device");
+                        finish();
+                        System.exit(0);
+                    }
 
-            case DISCOVERABLE_REQUEST_CODE:
-                if (resultCode == Activity.RESULT_CANCELED) {
-                    GlobalUtils.writeLogFile("Your device is not discoverable to others");
-                    System.out.println("Your device is not discoverable to others");
-                    finish();
-                    System.exit(0);
-                }
+                case DISCOVERABLE_REQUEST_CODE:
+                    if (resultCode == Activity.RESULT_CANCELED) {
+                        GlobalUtils.writeLogFile("Your device is not discoverable to others");
+                        System.out.println("Your device is not discoverable to others");
+                        finish();
+                        System.exit(0);
+                    }
+            }
+
+            Intent intent = new Intent(this, Myservice.class);
+            startService(intent);
+        } catch (Exception e){
+            GlobalUtils.writeLogFile("Exception in onActivity Result " + e.getMessage());
         }
-
-        Intent intent = new Intent(this, Myservice.class);
-        startService(intent);
     }
 
 
     @Override
     public void onLocationChanged(Location newLocation) {
-
-        /*double latitude = newLocation.getLatitude();
-        double longitude = newLocation.getLongitude();
-
-        GlobalUtils.writeLogFile("OnLocationChange listener called ");
-        GlobalUtils.writeLogFile("Current latitude " + latitude);
-        GlobalUtils.writeLogFile("Current longitude " + longitude);
-
-        // Creating a LatLng object for the current location
-        LatLng latLng = new LatLng(latitude, longitude);
-
-        Preferences.setSettingsParam("latitude", latitude + "");
-        Preferences.setSettingsParam("longitude", longitude + "");
-
-        // Showing the current location in Google Map
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
-
-        // Reroute
-        LatLng point = new LatLng(latitude, longitude);
-        if (directionPoint != null && GlobalUtils.isNetworkAvailable()) {
-            if (directionPoint.size() > 0 && !PolyUtil.isLocationOnPath(point, directionPoint, true, 100)) {
-
-                MapsTask mapsTask = new MapsTask();
-                srcdest[0] = latitude + ":#:" + longitude;
-                srcdest[1] = dest;
-
-                if (GlobalUtils.isNetworkAvailable()) {
-                    Toast.makeText(MapsActivity.this, "Rerouting Done - As you are not between source and destination", Toast.LENGTH_SHORT).show();
-                    mapsTask.execute(srcdest);
-                } else {
-                    Toast.makeText(MapsActivity.this, "Internet not available, Please connect", Toast.LENGTH_SHORT).show();
-                    finish();
-                }
-            }
-        }*/
     }
 
     @Override
@@ -393,74 +339,41 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onDestroy();
     }
 
-
-   /* private class ProximityReciever extends BroadcastReceiver {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-
-            // Key for determining whether user is leaving or entering
-            String key = LocationManager.KEY_PROXIMITY_ENTERING;
-
-            //Gives whether the user is entering or leaving in boolean form
-            boolean state = intent.getBooleanExtra(key, false);
-
-            if (state) {
-                Toast toast = Toast.makeText(context, "You are near a cross walk", Toast.LENGTH_LONG);
-                LinearLayout toastLayout = (LinearLayout) toast.getView();
-                TextView toastTV = (TextView) toastLayout.getChildAt(0);
-                toastTV.setTextSize(25);
-                toastTV.setBackgroundColor(Color.BLUE);
-                toastTV.setTextColor(Color.WHITE);
-                toast.show();
-            } else {
-                //Other custom Notification
-                // Log.i("MyTag", "Thank you for visiting my Area,come back again !!");
-                Toast toast = Toast.makeText(context, "Thank you for visiting my Area,come back again !!", Toast.LENGTH_LONG);
-                LinearLayout toastLayout = (LinearLayout) toast.getView();
-                TextView toastTV = (TextView) toastLayout.getChildAt(0);
-                toastTV.setTextSize(25);
-                toastTV.setTextColor(Color.BLUE);
-                toast.show();
-            }
-        }
-    }*/
-
-
-
-
     @Override
     public void onPause() {
         super.onPause();
-        if (progressDialog != null)
-            progressDialog.dismiss();
+        try {
+            if (progressDialog != null)
+                progressDialog.dismiss();
+        } catch (Exception e){
+            GlobalUtils.writeLogFile("Exception in onPause " + e.getMessage());
+        }
        // unregisterReceiver(proximityReceiver);
     }
 
     public void initNavigationDrawer() {
 
+        try {
+            NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+            navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(MenuItem menuItem) {
+
+                    int id = menuItem.getItemId();
+
+                    switch (id) {
+
+                        case R.id.mapview:
+                            // Toast.makeText(getApplicationContext(), "Register me", Toast.LENGTH_SHORT).show();
+
+                            FragmentTransaction fragmentTransaction2 = fragmentManager.beginTransaction();
+                            fragmentTransaction2.replace(R.id.container, new MyMapFragment()).commit();
+
+                            drawerLayout.closeDrawers();
+                            break;
 
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-
-                int id = menuItem.getItemId();
-
-                switch (id) {
-
-                    case R.id.mapview:
-                        // Toast.makeText(getApplicationContext(), "Register me", Toast.LENGTH_SHORT).show();
-
-                        FragmentTransaction  fragmentTransaction2=fragmentManager.beginTransaction();
-                        fragmentTransaction2.replace(R.id.container,new MyMapFragment()).commit();
-
-                        drawerLayout.closeDrawers();
-                        break;
-
-
-                    case R.id.datafromiot:
+                        case R.id.datafromiot:
 
                         /*Gson gson1 = new Gson();
                         DataFromIOT dataFromIOT = gson1.fromJson(Preferences.getSettingsParam("datafromiot"), DataFromIOT.class);
@@ -471,127 +384,75 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             Toast.makeText(getApplicationContext(), "No data received from IOT yet", Toast.LENGTH_LONG).show();*/
 
 
-                        FragmentTransaction  fragmentTransaction3=fragmentManager.beginTransaction();
-                        fragmentTransaction3.replace(R.id.container,new DataFromIOTFragment()).commit();
-                        drawerLayout.closeDrawers();
-                        break;
+                            FragmentTransaction fragmentTransaction3 = fragmentManager.beginTransaction();
+                            fragmentTransaction3.replace(R.id.container, new DataFromIOTFragment()).commit();
+                            drawerLayout.closeDrawers();
+                            break;
 
 
-
-                    case R.id.upgrade:
-                        Toast.makeText(getApplicationContext(), "Upgrade to Subscriber", Toast.LENGTH_SHORT).show();
+                        case R.id.upgrade:
+                            Toast.makeText(getApplicationContext(), "Upgrade to Subscriber", Toast.LENGTH_SHORT).show();
 
                         /*FragmentTransaction  fragmentTransaction=fragmentManager.beginTransaction();
                         fragmentTransaction.replace(R.id.container,new MyMapFragment()).commit();*/
 
-                        drawerLayout.closeDrawers();
-                        break;
+                            drawerLayout.closeDrawers();
+                            break;
 
-                    case R.id.settings:
-                        //Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
+                        case R.id.settings:
+                            //Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
 
-                        FragmentTransaction fragmentTransaction1=fragmentManager.beginTransaction();
-                        fragmentTransaction1.replace(R.id.container,new SettingsFragment()).commit();
+                            FragmentTransaction fragmentTransaction1 = fragmentManager.beginTransaction();
+                            fragmentTransaction1.replace(R.id.container, new SettingsFragment()).commit();
 
-                        drawerLayout.closeDrawers();
-                        break;
+                            drawerLayout.closeDrawers();
+                            break;
 
+                    }
+                    return true;
                 }
-                return true;
-            }
-        });
-        View header = navigationView.getHeaderView(0);
-        TextView tv_email = (TextView) header.findViewById(R.id.tv_email);
-        tv_email.setText("xyz user");
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+            });
 
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
 
-            @Override
-            public void onDrawerClosed(View v) {
-                super.onDrawerClosed(v);
-            }
+            View header = navigationView.getHeaderView(0);
+            TextView tv_email = (TextView) header.findViewById(R.id.tv_email);
+            tv_email.setText("xyz user");
+            drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
 
-            @Override
-            public void onDrawerOpened(View v) {
-                super.onDrawerOpened(v);
-            }
-        };
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
+            ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
+
+                @Override
+                public void onDrawerClosed(View v) {
+                    super.onDrawerClosed(v);
+                }
+
+                @Override
+                public void onDrawerOpened(View v) {
+                    super.onDrawerOpened(v);
+                }
+            };
+
+            drawerLayout.addDrawerListener(actionBarDrawerToggle);
+            actionBarDrawerToggle.syncState();
+        } catch (Exception e){
+            GlobalUtils.writeLogFile("Exception in initNavigation Drawer " + e.getMessage());
+        }
     }
-
-
-
 
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
-        //Checking the request code of our request
-        if (requestCode == Location_PERMISSION_CODE) {
+        try {
+            //Checking the request code of our request
+            if (requestCode == Location_PERMISSION_CODE) {
 
-            //If permission is granted
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                //Displaying a toast
-                Toast.makeText(this, "Permission granted now you can access the location", Toast.LENGTH_LONG).show();
-
-
-                src = src2;  // get data from intent
-                dest = dest2;// get data from intent
-                radius = 20;
-
-                if (radius == 0) {
-                    Toast.makeText(MapsActivity.this, "Radius cant be 0, minimum value is 1", Toast.LENGTH_SHORT).show();
-                    finish();
-                }
-
-                srcdest = new String[2];
-                srcdest[0] = src;
-                srcdest[1] = dest;
-
-
-                //Parse Crosswalk file and feed data.
-                crosswalks = GlobalUtils.getCrossWalkPoints();
-
-                // for proximity
-                registerReceiver(proximityReceiver, new IntentFilter(ACTION_FILTER));
-                lm = (LocationManager) getSystemService(LOCATION_SERVICE);
-
-                try {
-                    lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 10, this);
-                } catch (Exception e) {
-                    finish();
-                }
-
-                //Setting up My Broadcast Intent
-                Intent i = new Intent(ACTION_FILTER);
-                pi = PendingIntent.getBroadcast(getApplicationContext(), -1, i, 0);
-
-                //setting up proximituMethod
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    return;
-                }
-
-
-                //client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-                //mapFragment.getMapAsync(this);
-            } else {
-                //Displaying another toast if permission is not granted
-                Toast.makeText(this, "Oops you just denied the permission", Toast.LENGTH_LONG).show();
-            }
-        }
-
-        if (requestCode == External_PERMISSION_CODE) {
-
-            //If permission is granted
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                if (GlobalUtils.isLocationAllowed() == true) {
+                //If permission is granted
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
                     //Displaying a toast
                     Toast.makeText(this, "Permission granted now you can access the location", Toast.LENGTH_LONG).show();
+
 
                     src = src2;  // get data from intent
                     dest = dest2;// get data from intent
@@ -629,15 +490,73 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         return;
                     }
 
+
                     //client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
                     //mapFragment.getMapAsync(this);
                 } else {
-                    //requestLocationPermission();
+                    //Displaying another toast if permission is not granted
+                    Toast.makeText(this, "Oops you just denied the permission", Toast.LENGTH_LONG).show();
                 }
-            } else {
-                //Displaying another toast if permission is not granted
-                Toast.makeText(this, "Oops you just denied the permission", Toast.LENGTH_LONG).show();
             }
+
+            if (requestCode == External_PERMISSION_CODE) {
+
+                //If permission is granted
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    if (GlobalUtils.isLocationAllowed() == true) {
+
+                        //Displaying a toast
+                        Toast.makeText(this, "Permission granted now you can access the location", Toast.LENGTH_LONG).show();
+
+                        src = src2;  // get data from intent
+                        dest = dest2;// get data from intent
+                        radius = 20;
+
+                        if (radius == 0) {
+                            Toast.makeText(MapsActivity.this, "Radius cant be 0, minimum value is 1", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+
+                        srcdest = new String[2];
+                        srcdest[0] = src;
+                        srcdest[1] = dest;
+
+
+                        //Parse Crosswalk file and feed data.
+                        crosswalks = GlobalUtils.getCrossWalkPoints();
+
+                        // for proximity
+                        registerReceiver(proximityReceiver, new IntentFilter(ACTION_FILTER));
+                        lm = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+                        try {
+                            lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 10, this);
+                        } catch (Exception e) {
+                            finish();
+                        }
+
+                        //Setting up My Broadcast Intent
+                        Intent i = new Intent(ACTION_FILTER);
+                        pi = PendingIntent.getBroadcast(getApplicationContext(), -1, i, 0);
+
+                        //setting up proximituMethod
+                        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                            return;
+                        }
+
+                        //client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+                        //mapFragment.getMapAsync(this);
+                    } else {
+                        //requestLocationPermission();
+                    }
+                } else {
+                    //Displaying another toast if permission is not granted
+                    Toast.makeText(this, "Oops you just denied the permission", Toast.LENGTH_LONG).show();
+                }
+            }
+        } catch (Exception e){
+            GlobalUtils.writeLogFile("Exception in onRequest Permission " + e.getMessage());
         }
     }
 

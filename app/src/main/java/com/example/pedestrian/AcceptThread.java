@@ -41,16 +41,20 @@ public class AcceptThread extends Thread {
     public AcceptThread() {
         // Use a temporary object that is later assigned to mmServerSocket,
         // because mmServerSocket is final
-        BluetoothServerSocket tmp = null;
-        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        try {
-            // MY_UUID is the app's UUID string, also used by the client code
-            tmp = mBluetoothAdapter.listenUsingRfcommWithServiceRecord(NAME, MY_UUID);
-        } catch (IOException e) {
-            GlobalUtils.writeLogFile("Error in BLE Listening "+ e.getMessage());
-        }
-        mmServerSocket = tmp;
 
+        try {
+            BluetoothServerSocket tmp = null;
+            BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+            try {
+                // MY_UUID is the app's UUID string, also used by the client code
+                tmp = mBluetoothAdapter.listenUsingRfcommWithServiceRecord(NAME, MY_UUID);
+            } catch (IOException e) {
+                GlobalUtils.writeLogFile("Error in BLE Listening " + e.getMessage());
+            }
+            mmServerSocket = tmp;
+        } catch (Exception e){
+            GlobalUtils.writeLogFile("Exception in Accept Thread " + e.getMessage());
+        }
 
     }
 
