@@ -33,12 +33,11 @@ public class Splash extends Activity {
             Point size = new Point();
             display.getSize(size);
             File file = new File("/sdcard/splashscreen.png");
-            if (file != null) {
+            if (file.exists() &&  file != null) {
                 bmp = Bitmap.createScaledBitmap(BitmapFactory.decodeFile(file.getAbsolutePath()), size.x, size.y, true);
+            }else {
+                bmp = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.iot), size.x, size.y,true);
             }
-
-            //Bitmap bmp = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.splash_new), size.x, size.y,true);
-
         /* fill the background ImageView with the resized image */
             ImageView iv_background = (ImageView) findViewById(R.id.image);
             iv_background.setImageBitmap(bmp);

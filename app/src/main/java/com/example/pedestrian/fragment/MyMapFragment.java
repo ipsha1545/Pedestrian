@@ -73,8 +73,8 @@ import java.util.StringTokenizer;
  */
 public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, LocationListener, View.OnClickListener {
 
-    private EditText autocompleteView, autocompleteView2;
-    private Button find;
+   // private EditText autocompleteView, autocompleteView2;
+    //private Button find;
     String src2 = "", dest2 = "", src = "", dest = "";
     PendingIntent pi;
     ArrayList<LatLng> directionPoint = null;
@@ -82,7 +82,7 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
 
     LatLng latLngSrc, latLngDest;
     ArrayList<Crosswalks> crosswalks;
-    ArrayList<Crosswalks> crosswalksNew;
+    //ArrayList<Crosswalks> crosswalksNew;
     ProgressDialog progressDialog;
     String ACTION_FILTER = "com.example.proximityalert";
     LocationManager lm;
@@ -107,36 +107,20 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
         View view = inflater.inflate(R.layout.activity_maps,container, false);
 
         try {
-            autocompleteView = (EditText) view.findViewById(R.id.autocomplete);
-            autocompleteView2 = (EditText) view.findViewById(R.id.autocomplete2);
-            find = (Button) view.findViewById(R.id.btn_signup);
-
-            if (!Preferences.getSettingsParam("source").equals("")) {
-                autocompleteView.setText(Preferences.getSettingsParam("source"));
-            }
-
-            if (!Preferences.getSettingsParam("destination").equals("")) {
-                autocompleteView2.setText(Preferences.getSettingsParam("destination"));
-            }
 
             crosswalks = new ArrayList<Crosswalks>();
 
             // Obtain the SupportMapFragment and get notified when the map is ready to be used.
             mapFragment = (SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.map);
 
-
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
 
             client = new GoogleApiClient.Builder(getActivity()).addApi(AppIndex.API).build();
 
-            proximityReceiver = new ProximityReciever();
-            getActivity().registerReceiver(proximityReceiver, new IntentFilter(ACTION_FILTER));
-
-
-            find.setOnClickListener(this);
-
             findRoute();
+
+
         } catch (Exception e){
             GlobalUtils.writeLogFile("Error in Map Fragment " + e.getMessage());
         }
@@ -154,21 +138,6 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
 
         try {
             GlobalUtils.writeLogFile("Find route Button clicked");
-            if (autocompleteView.getText().toString().equals("")) {
-                autocompleteView.setError("This cant be empty");
-                return;
-            } else {
-                src2 = autocompleteView.getText().toString();
-                Preferences.setSettingsParam("source", src2);
-            }
-
-            if (autocompleteView2.getText().toString().equals("")) {
-                autocompleteView2.setError("This cant be empty");
-                return;
-            } else {
-                dest2 = autocompleteView2.getText().toString();
-                Preferences.setSettingsParam("destination", dest2);
-            }
 
             if (GlobalUtils.isLocationAllowed() && GlobalUtils.isExternalStorageAllowed()) {
 
@@ -176,15 +145,9 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
                 dest = dest2;// get data from intent
                 radius = 20;
 
-            /*if (radius == 0) {
-              //  Toast.makeText(getActivity(), "Radius cant be 0, minimum value is 1", Toast.LENGTH_SHORT).show();
-                //finish();
-            }*/
-
                 srcdest = new String[2];
                 srcdest[0] = src;
                 srcdest[1] = dest;
-
 
                 //Parse Crosswalk file and feed data.
                 crosswalks = GlobalUtils.getCrossWalkPoints();
@@ -275,39 +238,22 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
             Preferences.setSettingsParam("latitude", latitude + "");
             Preferences.setSettingsParam("longitude", longitude + "");
 
+
+            String mapZoom = Preferences.getSettingsParam("mapzoom");
+            int mapZoomLevel = 15;
+
+            if (!mapZoom.equals("")) {
+                mapZoomLevel = Integer.parseInt(mapZoom);
+            }
+
             // Showing the current location in Google Map
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(mapZoomLevel));
+
+
         } catch (Exception e){
             GlobalUtils.writeLogFile("Error in onlocation change listener " + e.getMessage());
         }
-
-        // Reroute
-        /*LatLng point = new LatLng(latitude, longitude);
-        if (directionPoint != null && GlobalUtils.isNetworkAvailable()) {
-
-            if (directionPoint.size() > 0 && !PolyUtil.isLocationOnPath(point, directionPoint, true, 100)) {
-
-
-
-                MapsTask mapsTask = new MapsTask();
-                srcdest[0] = latitude + ":#:" + longitude;
-                srcdest[1] = dest;
-
-                if (GlobalUtils.isNetworkAvailable()) {
-                    Toast.makeText(getActivity(), "Rerouting Done - As you are not between source and destination", Toast.LENGTH_SHORT).show();
-                    mapsTask.execute(srcdest);
-                } else {
-                    Toast.makeText(getActivity(), "Internet not available, Please connect", Toast.LENGTH_SHORT).show();
-                   // finish();
-                }
-            } else{
-                Toast.makeText(getActivity(), "you are on track", Toast.LENGTH_SHORT).show();
-            }
-        } else{
-            Toast.makeText(getActivity(), "direct point null or network not available", Toast.LENGTH_SHORT).show();
-        }*/
-
     }
 
     @Override
@@ -395,7 +341,7 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
     @Override
     public void onClick(View view) {
 
-        if(view.getId() == R.id.btn_signup){
+        /*if(view.getId() == R.id.btn_signup){
             findRoute();
 
             try {
@@ -403,7 +349,7 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
                 inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
             } catch (Exception e) {
             }
-        }
+        }*/
     }
 
     private class ProximityReciever extends BroadcastReceiver {
@@ -458,89 +404,14 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
         }
     }
 
-    private class MapsTask extends AsyncTask<String[], String, ArrayList<LatLng>> {
+    private class MapsTask extends AsyncTask<String[], String, String> {
 
         private String resp;
 
         @Override
-        protected ArrayList<LatLng> doInBackground(String[]... params) {
+        protected String doInBackground(String[]... params) {
 
-            String[] srcdest = params[0];
-            String source = srcdest[0];
-            String destination = srcdest[1];
-
-            try {
-                latLngSrc = GlobalUtils.getLocationFromAddress(source.trim());
-                if (latLngSrc != null) {
-                    sourceLat = latLngSrc.latitude;
-                    sourceLong = latLngSrc.longitude;
-                }
-
-                latLngDest = GlobalUtils.getLocationFromAddress(destination.trim());
-                if(latLngDest!=null){
-                    destinationLat = latLngDest.latitude;
-                    destinationLong = latLngDest.longitude;
-                }
-
-                /*if (source.contains(":#:")) {
-
-                    ArrayList<Double> array = new ArrayList<Double>(2);
-                    StringTokenizer st = new StringTokenizer(source, ":#:");
-                    while (st.hasMoreTokens()) {
-                        array.add(Double.parseDouble(st.nextToken()));
-                    }
-
-                    sourceLat = array.get(0);
-                    sourceLong = array.get(1);
-                    latLngSrc = new LatLng(sourceLat, sourceLong);
-
-                    //GlobalUtils.writeLogFile("Source latlong " + latLngSrc);
-
-                    latLngDest = GlobalUtils.getLocationFromAddress(destination.trim());
-                    destinationLat = latLngDest.latitude;
-                    destinationLong = latLngDest.longitude;
-
-                    //GlobalUtils.writeLogFile("Dest latlong " + latLngDest);
-
-                } else {
-                    latLngSrc = GlobalUtils.getLocationFromAddress(source.trim());
-                    sourceLat = latLngSrc.latitude;
-                    sourceLong = latLngSrc.longitude;
-
-                    latLngDest = GlobalUtils.getLocationFromAddress(destination.trim());
-                    destinationLat = latLngDest.latitude;
-                    destinationLong = latLngDest.longitude;
-                }*/
-            } catch (Exception e) {
-                e.printStackTrace();
-
-                progressDialog.dismiss();
-
-
-                final String error = e.getMessage();
-
-                GlobalUtils.writeLogFile("Exception in AsyncTask " + e.getMessage());
-
-                /*getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(getActivity(), error, Toast.LENGTH_LONG).show();
-
-                    }
-                });*/
-            }
-
-            if (latLngSrc != null & latLngDest != null) {
-                GMapV2Direction md = new GMapV2Direction();
-                Document doc = md.getDocument(latLngSrc, latLngDest, GMapV2Direction.MODE_WALKING);
-                directionPoint = md.getDirection(doc);
-                return directionPoint;
-
-            } else {
-                //finish();
-                progressDialog.dismiss();
-                return null;
-            }
+            return "";
         }
 
         @Override
@@ -549,73 +420,36 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
         }
 
         @Override
-        protected void onPostExecute(ArrayList<LatLng> directionPoint) {
+        protected void onPostExecute(String str) {
 
-            try {
-                if (directionPoint != null) {
+            mMap.clear();
 
-                    GlobalUtils.writeLogFile("OnPostExecute start ");
+            String mapZoom = Preferences.getSettingsParam("mapzoom");
+            int mapZoomLevel = 15;
 
-                    mMap.clear();
-
-                    PolylineOptions rectLine = new PolylineOptions().width(10).color(Color.BLUE);
-
-                    for (int i = 0; i < directionPoint.size(); i++) {
-                        rectLine.add(directionPoint.get(i));
-                    }
-
-                    Polyline polylin = mMap.addPolyline(rectLine);
-
-                    String mapZoom = Preferences.getSettingsParam("mapzoom");
-                    int mapZoomLevel = 15;
-
-                    if (!mapZoom.equals("")) {
-                        mapZoomLevel = Integer.parseInt(mapZoom);
-                    }
-
-                    CameraUpdate center = CameraUpdateFactory.newLatLngZoom(latLngSrc, mapZoomLevel);
-                    mMap.moveCamera(center);
-//                mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
-
-                    if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                        return;
-                    }
-                    mMap.setMyLocationEnabled(true);
-
-                    mMap.addMarker(new MarkerOptions().position(new LatLng(sourceLat, sourceLong)).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-                    mMap.addMarker(new MarkerOptions().position(new LatLng(destinationLat, destinationLong)).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-
-                    BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.crosswalk);
-
-                    crosswalksNew = new ArrayList<>();
-                    crosswalksNew = GlobalUtils.filterCrossWalkPoints(crosswalks, directionPoint);
-
-                    // add crosswalk images
-                    for (int j = 0; j < crosswalksNew.size(); j++) {
-
-                        mMap.addGroundOverlay(new GroundOverlayOptions().image(icon).positionFromBounds(GlobalUtils.toBounds(crosswalksNew.get(j).getLatlng(), 17)));
-
-                        lm.addProximityAlert(crosswalksNew.get(j).getLat(), crosswalksNew.get(j).getLng(), radius, -1, pi);
-                    }
-
-                    //add heat maps
-                    addHeatMap();
-
-                    progressDialog.dismiss();
-
-                    GlobalUtils.writeLogFile("OnPostExecute end");
-
-
-                } else {
-                    progressDialog.dismiss();
-                    Toast.makeText(getActivity(), "Cannot find address. Please re-enter the address", Toast.LENGTH_LONG).show();
-                }
-            } catch (NumberFormatException e){
-                Toast.makeText(getActivity(), "Number Format Exception", Toast.LENGTH_LONG).show();
-            } catch (Exception e){
-                Toast.makeText(getActivity(), e.getMessage() , Toast.LENGTH_LONG).show();
-                GlobalUtils.writeLogFile("Exception in PostExecute Method " + e.getMessage());
+            if (!mapZoom.equals("")) {
+                mapZoomLevel = Integer.parseInt(mapZoom);
             }
+
+            Location currentLocation = GlobalUtils.getLocation();
+
+            if(currentLocation!=null) {
+                LatLng currentLatLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
+                CameraUpdate center = CameraUpdateFactory.newLatLngZoom(currentLatLng, mapZoomLevel);
+                mMap.moveCamera(center);
+            }
+
+            // mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
+
+            if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return ;
+            }
+            mMap.setMyLocationEnabled(true);
+
+            //add heat maps
+            addHeatMap();
+
+            progressDialog.dismiss();
         }
 
         @Override

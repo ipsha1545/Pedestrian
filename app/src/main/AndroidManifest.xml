@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+
     package="com.example.pedestrian">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -28,7 +29,8 @@
 
         android:theme="@style/AppTheme">
 
-        <activity android:name=".Splash">
+        <activity android:name=".Splash"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -49,7 +51,8 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+            android:label="@string/title_activity_maps"
+            android:screenOrientation="portrait" ></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
         <meta-data
             android:name="com.google.android.gms.version"
