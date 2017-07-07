@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "928064852538",
+    "project_id": "pednischal"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:928064852538:android:7a85f17e1f611768",
+        "android_client_info": {
+          "package_name": "com.example.pedestrian"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "928064852538-2n4opv529na2n3lp65i8bluvu3opc14h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pedestrian",
+            "certificate_hash": "1e1b438535e0cfb8436ef7d85454b532ba3e4293"
+          }
+        },
+        {
+          "client_id": "928064852538-mriejs32f3ab51bmfg70rfm03hhmrl4n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjeoVtr_QcvlbTBONhaBwVmnJ0vaA8Tp8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

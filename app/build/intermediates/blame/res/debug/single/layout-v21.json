@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "/Users/ipshamohanty/Downloads/Pedestrian/app/build/intermediates/res/merged/debug/layout-v21/notification_action.xml",
+        "source": "/Users/ipshamohanty/.android/build-cache/34e1dd446e41685bfab8c0fbbe756a3516d3a07f/output/res/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "/Users/ipshamohanty/Downloads/Pedestrian/app/build/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
+        "source": "/Users/ipshamohanty/.android/build-cache/34e1dd446e41685bfab8c0fbbe756a3516d3a07f/output/res/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/Users/ipshamohanty/Downloads/Pedestrian/app/build/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
+        "source": "/Users/ipshamohanty/.android/build-cache/34e1dd446e41685bfab8c0fbbe756a3516d3a07f/output/res/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/ipshamohanty/Downloads/Pedestrian/app/build/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
+        "source": "/Users/ipshamohanty/.android/build-cache/34e1dd446e41685bfab8c0fbbe756a3516d3a07f/output/res/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/Users/ipshamohanty/Downloads/Pedestrian/app/build/intermediates/res/merged/debug/layout-v21/place_autocomplete_fragment.xml",
+        "source": "/Users/ipshamohanty/.android/build-cache/d102c4f493af42ff97874e0c04d624c486773b8c/output/res/layout-v21/place_autocomplete_fragment.xml"
+    }
+]

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/ipshamohanty/Downloads/Pedestrian/app/build/intermediates/res/merged/debug/raw/heat_map.json",
+        "source": "/Users/ipshamohanty/Downloads/Pedestrian/app/src/debug/res/raw/heat_map.json"
+    },
+    {
+        "merged": "/Users/ipshamohanty/Downloads/Pedestrian/app/build/intermediates/res/merged/debug/raw/gtm_analytics",
+        "source": "/Users/ipshamohanty/.android/build-cache/8bb0b99c7ee87cd806cd0d30c190a243e94cc76d/output/res/raw/gtm_analytics"
+    }
+]

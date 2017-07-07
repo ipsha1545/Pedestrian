@@ -23,6 +23,8 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.UUID;
 
+import com.example.pedestrian.curl.Curl;
+import com.example.pedestrian.utils.AppConstants;
 import com.example.pedestrian.utils.DataFromIOT;
 import com.example.pedestrian.utils.DataToServer;
 import com.example.pedestrian.utils.GlobalUtils;
@@ -166,6 +168,7 @@ public class AcceptThread extends Thread {
             dataToServer.setLatitude(latitude1+"");
             dataToServer.setConnectedCount(dataFromIOT.getDevicesCount());
             dataToServer.setTimeStamp(dataFromIOT.getTimeStamp());
+            dataToServer.setUserId(Preferences.getUserId());
 
             Gson gson = new Gson();
             String mdata = gson.toJson(dataToServer);
@@ -175,7 +178,7 @@ public class AcceptThread extends Thread {
             URL url = null;
 
             try {
-                url = new URL("http://rsin-nisbnvm.india.rsystems.com/DemoAPI/api/device");
+                url = new URL(AppConstants.BaseURL + "/api/device");
             } catch (MalformedURLException e1) {
                 e1.printStackTrace();
             }

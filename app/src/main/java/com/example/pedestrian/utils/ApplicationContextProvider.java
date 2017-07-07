@@ -3,7 +3,9 @@ package com.example.pedestrian.utils;
 import android.app.Application;
 import android.content.Context;
 
+import org.acra.annotation.ReportsCrashes;
 
+@ReportsCrashes
 public class ApplicationContextProvider extends Application {
  
     /**

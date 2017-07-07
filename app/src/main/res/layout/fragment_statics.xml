@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <EditText
+        android:id="@+id/et_minutes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter minutes"
+        android:inputType="number"
+        android:layout_marginTop="100dp"/>
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_total_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Total Count"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_due_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_total_count"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:text="View amount due"/>
+
+    <EditText
+        android:id="@+id/tv_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_total_count"
+        android:layout_marginTop="10dp"
+        android:hint="View amount due"
+        />
+
+
+</RelativeLayout>

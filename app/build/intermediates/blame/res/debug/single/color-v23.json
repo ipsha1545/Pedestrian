@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "/Users/ipshamohanty/Downloads/Pedestrian/app/build/intermediates/res/merged/debug/color-v23/design_tint_password_toggle.xml",
+        "source": "/Users/ipshamohanty/.android/build-cache/efb276c7b9080927b6d2d12350c2d009bfaf846d/output/res/color-v23/design_tint_password_toggle.xml"
+    },
+    {
+        "merged": "/Users/ipshamohanty/Downloads/Pedestrian/app/build/intermediates/res/merged/debug/color-v23/abc_tint_seek_thumb.xml",
+        "source": "/Users/ipshamohanty/.android/build-cache/34e1dd446e41685bfab8c0fbbe756a3516d3a07f/output/res/color-v23/abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "/Users/ipshamohanty/Downloads/Pedestrian/app/build/intermediates/res/merged/debug/color-v23/abc_color_highlight_material.xml",
+        "source": "/Users/ipshamohanty/.android/build-cache/34e1dd446e41685bfab8c0fbbe756a3516d3a07f/output/res/color-v23/abc_color_highlight_material.xml"
+    },
+    {
+        "merged": "/Users/ipshamohanty/Downloads/Pedestrian/app/build/intermediates/res/merged/debug/color-v23/abc_btn_colored_borderless_text_material.xml",
+        "source": "/Users/ipshamohanty/.android/build-cache/34e1dd446e41685bfab8c0fbbe756a3516d3a07f/output/res/color-v23/abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "/Users/ipshamohanty/Downloads/Pedestrian/app/build/intermediates/res/merged/debug/color-v23/abc_tint_switch_track.xml",
+        "source": "/Users/ipshamohanty/.android/build-cache/34e1dd446e41685bfab8c0fbbe756a3516d3a07f/output/res/color-v23/abc_tint_switch_track.xml"
+    },
+    {
+        "merged": "/Users/ipshamohanty/Downloads/Pedestrian/app/build/intermediates/res/merged/debug/color-v23/abc_tint_edittext.xml",
+        "source": "/Users/ipshamohanty/.android/build-cache/34e1dd446e41685bfab8c0fbbe756a3516d3a07f/output/res/color-v23/abc_tint_edittext.xml"
+    },
+    {
+        "merged": "/Users/ipshamohanty/Downloads/Pedestrian/app/build/intermediates/res/merged/debug/color-v23/abc_tint_switch_thumb.xml",
+        "source": "/Users/ipshamohanty/.android/build-cache/34e1dd446e41685bfab8c0fbbe756a3516d3a07f/output/res/color-v23/abc_tint_switch_thumb.xml"
+    },
+    {
+        "merged": "/Users/ipshamohanty/Downloads/Pedestrian/app/build/intermediates/res/merged/debug/color-v23/abc_tint_spinner.xml",
+        "source": "/Users/ipshamohanty/.android/build-cache/34e1dd446e41685bfab8c0fbbe756a3516d3a07f/output/res/color-v23/abc_tint_spinner.xml"
+    },
+    {
+        "merged": "/Users/ipshamohanty/Downloads/Pedestrian/app/build/intermediates/res/merged/debug/color-v23/abc_tint_default.xml",
+        "source": "/Users/ipshamohanty/.android/build-cache/34e1dd446e41685bfab8c0fbbe756a3516d3a07f/output/res/color-v23/abc_tint_default.xml"
+    },
+    {
+        "merged": "/Users/ipshamohanty/Downloads/Pedestrian/app/build/intermediates/res/merged/debug/color-v23/abc_tint_btn_checkable.xml",
+        "source": "/Users/ipshamohanty/.android/build-cache/34e1dd446e41685bfab8c0fbbe756a3516d3a07f/output/res/color-v23/abc_tint_btn_checkable.xml"
+    }
+]

@@ -20,14 +20,18 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -40,12 +44,20 @@ import com.example.pedestrian.GMapV2Direction;
 import com.example.pedestrian.MapsActivity;
 import com.example.pedestrian.Myservice;
 import com.example.pedestrian.R;
+import com.example.pedestrian.adapter.PlaceArrayAdapter;
 import com.example.pedestrian.curl.Curl;
+import com.example.pedestrian.utils.AppConstants;
 import com.example.pedestrian.utils.GlobalUtils;
 import com.example.pedestrian.utils.Preferences;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.PlaceBuffer;
+import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -53,8 +65,10 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -73,7 +87,7 @@ import java.util.StringTokenizer;
  */
 public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, LocationListener, View.OnClickListener {
 
-   // private EditText autocompleteView, autocompleteView2;
+    // private EditText autocompleteView, autocompleteView2;
     //private Button find;
     String src2 = "", dest2 = "", src = "", dest = "";
     PendingIntent pi;
@@ -95,6 +109,8 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
 
     int radius = 1;
     double sourceLat, sourceLong, destinationLat, destinationLong;
+
+    private GoogleMap mMap;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -334,9 +350,22 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
         } catch (Exception e){
             GlobalUtils.writeLogFile("Error onMaoReady " + e.getMessage());
         }
+
+       /* mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                mMap.addMarker(new MarkerOptions().position(latLng).title("Custom location").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+                mMap.addCircle(new CircleOptions()
+                        .center(latLng)
+                        .radius(500)
+                        .strokeWidth(0f)
+                        .fillColor(0x550000FF));
+            }
+        });*/
+
     }
 
-    private GoogleMap mMap;
+
 
     @Override
     public void onClick(View view) {
@@ -379,14 +408,58 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
 
         try {
             List<LatLng> list = null;
-
+            String response = null;
             int i = 1;
 
             if(!Preferences.getSettingsParam("duration").equals("")){
                 i = Integer.parseInt(Preferences.getSettingsParam("duration"));
             }
 
-            String response = Curl.getInSeparateThread("http://rsin-nisbnvm.india.rsystems.com/DemoAPI/api/device" + "/" + i);
+            if (Preferences.getSettingsParam("Radio").equalsIgnoreCase("All")){
+                response  = Curl.getInSeparateThread(AppConstants.BaseURL + "/api/device" + "/" + i);
+            }else if (Preferences.getSettingsParam("Radio").equalsIgnoreCase("Individual")){
+                response = Curl.getInSeparateThread(AppConstants.BaseURL + "/api/device" + "/" + i + "/" + Preferences.getUserId());
+            }
+
+
+            GlobalUtils.writeLogFile("Response from server for heat map: " + response);
+
+            list = GlobalUtils.readItems(response);
+            Toast.makeText(getActivity(), "Total Count: " + list.size(), Toast.LENGTH_SHORT).show();
+
+            // Create a heat map tile provider, passing it the latlngs of the police stations.
+            HeatmapTileProvider provider = new HeatmapTileProvider.Builder().data(list).build();
+
+            // Add a tile overlay to the map, using the heat map tile provider.
+            mMap.addTileOverlay(new TileOverlayOptions().tileProvider(provider));
+            Location currentLocation = GlobalUtils.getLocation();
+
+            LatLng currentLatLng = null;
+            if (currentLocation != null) {
+                currentLatLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
+            }
+
+        } catch (Exception e) {
+            GlobalUtils.writeLogFile("Exception in addHeatMap " + e.getMessage());
+        }
+    }
+
+
+    private void addHeatMapThroughDate() {
+
+        try {
+            List<LatLng> list = null;
+
+            String FromDate = null, toDate = null;
+
+            if(!Preferences.getSettingsParam("FromDate").equals("") && !Preferences.getSettingsParam("ToDate").equals("")){
+
+                FromDate = Preferences.getSettingsParam("FromDate");
+                toDate = Preferences.getSettingsParam("ToDate");
+
+            }
+
+            String response = Curl.getInSeparateThread(AppConstants.BaseURL + "/api/device" +"?StartDate=" + FromDate + "&EndDate="+ toDate);
 
             GlobalUtils.writeLogFile("Response from server for heat map: " + response);
 
@@ -433,8 +506,9 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
 
             Location currentLocation = GlobalUtils.getLocation();
 
-            if(currentLocation!=null) {
-                LatLng currentLatLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
+            LatLng currentLatLng = null;
+            if (currentLocation != null) {
+                currentLatLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
                 CameraUpdate center = CameraUpdateFactory.newLatLngZoom(currentLatLng, mapZoomLevel);
                 mMap.moveCamera(center);
             }
@@ -442,12 +516,21 @@ public class MyMapFragment extends BaseFragment implements OnMapReadyCallback, L
             // mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
 
             if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                return ;
+                return;
             }
             mMap.setMyLocationEnabled(true);
 
+
+            if (!Preferences.getSettingsParam("duration").equalsIgnoreCase("")) {
+
+                addHeatMap();
+            } else if (!Preferences.getSettingsParam("FromDate").equalsIgnoreCase("")) {
+
+                addHeatMapThroughDate();
+            }
             //add heat maps
-            addHeatMap();
+
+
 
             progressDialog.dismiss();
         }

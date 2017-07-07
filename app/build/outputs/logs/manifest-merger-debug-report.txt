@@ -1,0 +1,541 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:2:1-85:12
+	package
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:4:5-37
+		INJECTED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml
+uses-feature#android.hardware.camera
+ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:6:5-7:36
+	android:required
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:7:9-33
+	android:name
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:6:19-57
+uses-permission#android.permission.CAMERA
+ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:8:5-65
+	android:name
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:8:22-62
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:9:5-81
+	android:name
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:9:22-78
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:10:5-81
+	android:name
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:10:22-78
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:11:5-76
+	android:name
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:11:22-73
+uses-permission#android.permission.BLUETOOTH
+ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:12:5-68
+	android:name
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:12:22-65
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:13:5-73
+	android:name
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:13:22-71
+uses-permission#android.permission.INTERNET
+ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:14:5-67
+MERGED from [com.google.android.gms:play-services-ads-lite:10.0.1] /Users/ipshamohanty/.android/build-cache/e1bc73d3392a3ad9e1a5bd58587aec54d052e57a/output/AndroidManifest.xml:19:5-66
+MERGED from [com.google.android.gms:play-services-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/055499279f7dcd6e06c89966207de25a2122846e/output/AndroidManifest.xml:20:5-66
+MERGED from [com.google.android.gms:play-services-appinvite:10.0.1] /Users/ipshamohanty/.android/build-cache/a31e1eff193204ab58df35b87497c8374fb2199f/output/AndroidManifest.xml:18:5-66
+MERGED from [com.google.firebase:firebase-crash:10.0.1] /Users/ipshamohanty/.android/build-cache/21b6f3ae6e770996ad63f6e6a5889a44a9d6ca1a/output/AndroidManifest.xml:18:5-66
+MERGED from [com.google.android.gms:play-services-gcm:10.0.1] /Users/ipshamohanty/.android/build-cache/03d646db2f2d8d4c843e3e25021aa938811699e7/output/AndroidManifest.xml:21:5-66
+MERGED from [com.google.android.gms:play-services-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/2b265c8b426c59502fff0a8c91ddd7c1bde73dc4/output/AndroidManifest.xml:21:5-66
+MERGED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] /Users/ipshamohanty/.android/build-cache/511e4d0a5aadd74cd39003f942c5fb9ba89a93e9/output/AndroidManifest.xml:20:5-66
+MERGED from [com.google.android.gms:play-services-analytics-impl:10.0.1] /Users/ipshamohanty/.android/build-cache/1cd5f2b32eb88019271618e55e751a775ff24c4d/output/AndroidManifest.xml:20:5-66
+MERGED from [com.google.android.gms:play-services-maps:10.0.1] /Users/ipshamohanty/.android/build-cache/8873913520f9cdde9ce4a080d8c7ddd52e37e4b7/output/AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/4687dc7c705de00cf8d5104b8332909bf3c926f1/output/AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] /Users/ipshamohanty/.android/build-cache/032a75eb1e56b4106deccd3a762f340f7645ed57/output/AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:20:5-66
+	android:name
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:14:22-64
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:15:5-80
+	android:name
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:15:22-77
+uses-permission#com.google.android.providers.gsf.permission.READ_GSERVICES
+ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:17:5-97
+	android:name
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:17:22-95
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:25:5-79
+	android:name
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:25:22-76
+uses-permission#android.permission.WRITE_SETTINGS
+ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:26:5-72
+	android:name
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:26:22-70
+application
+ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:35:5-83:19
+MERGED from [com.google.android.gms:play-services:10.0.1] /Users/ipshamohanty/.android/build-cache/bd9b51ca05f4e3e4aeaef6433c11f7922b419752/output/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-ads-lite:10.0.1] /Users/ipshamohanty/.android/build-cache/e1bc73d3392a3ad9e1a5bd58587aec54d052e57a/output/AndroidManifest.xml:23:5-27:19
+MERGED from [com.google.android.gms:play-services-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/055499279f7dcd6e06c89966207de25a2122846e/output/AndroidManifest.xml:26:5-19
+MERGED from [com.google.android.gms:play-services-appinvite:10.0.1] /Users/ipshamohanty/.android/build-cache/a31e1eff193204ab58df35b87497c8374fb2199f/output/AndroidManifest.xml:19:5-26:19
+MERGED from [com.google.android.gms:play-services-auth:10.0.1] /Users/ipshamohanty/.android/build-cache/0b1e3ba0410f491d377ba985ac6ebbd0e7258af8/output/AndroidManifest.xml:19:5-25:19
+MERGED from [com.google.android.gms:play-services-cast-framework:10.0.1] /Users/ipshamohanty/.android/build-cache/1bd3170fe1685db258c97a71870efbda00ba9ec7/output/AndroidManifest.xml:4:5-8:19
+MERGED from [com.google.android.gms:play-services-cast:10.0.1] /Users/ipshamohanty/.android/build-cache/231c1fa5cd92d176f60dd5dd7721b4c562210a24/output/AndroidManifest.xml:18:5-19
+MERGED from [com.android.support:mediarouter-v7:24.0.0] /Users/ipshamohanty/.android/build-cache/5a7b0046029c4b7d86c467cd73ff1bb9fb589630/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:palette-v7:24.0.0] /Users/ipshamohanty/.android/build-cache/d80d36bbef54ec6f978c66c8835064f1cb920a07/output/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-clearcut:10.0.1] /Users/ipshamohanty/.android/build-cache/9891ac84ccc23170cd4b74438b3958bc30bcb8e7/output/AndroidManifest.xml:18:5-19
+MERGED from [com.google.firebase:firebase-config:10.0.1] /Users/ipshamohanty/.android/build-cache/d369834da6021e36d576e94fd858215e74cb855a/output/AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-awareness:10.0.1] /Users/ipshamohanty/.android/build-cache/62428bcf8f09130e6924bfc2c6133d81a90831a4/output/AndroidManifest.xml:18:5-19
+MERGED from [com.google.firebase:firebase-crash:10.0.1] /Users/ipshamohanty/.android/build-cache/21b6f3ae6e770996ad63f6e6a5889a44a9d6ca1a/output/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.firebase:firebase-auth:10.0.1] /Users/ipshamohanty/.android/build-cache/e368c125d6aeeab7b66fb72e282c389ce6bf752a/output/AndroidManifest.xml:19:5-20:19
+MERGED from [com.google.firebase:firebase-messaging:10.0.1] /Users/ipshamohanty/.android/build-cache/6173fd14fc138cc6fb99812e4f08ca9d0207655f/output/AndroidManifest.xml:19:5-29:19
+MERGED from [com.google.android.gms:play-services-fitness:10.0.1] /Users/ipshamohanty/.android/build-cache/385399bab80fb88bf8820289a64389d76e478bbb/output/AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-games:10.0.1] /Users/ipshamohanty/.android/build-cache/eb3090d962ba5efb3ff24dab5be51cea3a413f08/output/AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-drive:10.0.1] /Users/ipshamohanty/.android/build-cache/e5a4ab6c69ef9b7b15a8d00e81107e197ee62df4/output/AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-gass:10.0.1] /Users/ipshamohanty/.android/build-cache/4a77d5a7e866d5a97eb6fc8694c1ffbcb1f44f65/output/AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-gcm:10.0.1] /Users/ipshamohanty/.android/build-cache/03d646db2f2d8d4c843e3e25021aa938811699e7/output/AndroidManifest.xml:23:5-19
+MERGED from [com.google.firebase:firebase-appindexing:10.0.1] /Users/ipshamohanty/.android/build-cache/460f43ee9c4686ea97cc59ed6a9cddcd345dd3a3/output/AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/2b265c8b426c59502fff0a8c91ddd7c1bde73dc4/output/AndroidManifest.xml:23:5-19
+MERGED from [com.google.android.gms:play-services-location:10.0.1] /Users/ipshamohanty/.android/build-cache/56422407f4cdf49b95f9164f7f73c365fb3e34ef/output/AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-nearby:10.0.1] /Users/ipshamohanty/.android/build-cache/a7cc67c580a00ea7300c3ba8fa5b13b88b9a7d08/output/AndroidManifest.xml:5:5-19
+MERGED from [com.google.android.gms:play-services-panorama:10.0.1] /Users/ipshamohanty/.android/build-cache/4587719e96948e27d3017dacad8259e2d7b4b31c/output/AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-places:10.0.1] /Users/ipshamohanty/.android/build-cache/d102c4f493af42ff97874e0c04d624c486773b8c/output/AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-plus:10.0.1] /Users/ipshamohanty/.android/build-cache/efe2248671af14601aa428525167044a2e0dffef/output/AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-safetynet:10.0.1] /Users/ipshamohanty/.android/build-cache/5ac9a90095328aba42a483e855c985f676bf03cb/output/AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] /Users/ipshamohanty/.android/build-cache/511e4d0a5aadd74cd39003f942c5fb9ba89a93e9/output/AndroidManifest.xml:23:5-33:19
+MERGED from [com.google.android.gms:play-services-tagmanager-v4-impl:10.0.1] /Users/ipshamohanty/.android/build-cache/8bb0b99c7ee87cd806cd0d30c190a243e94cc76d/output/AndroidManifest.xml:19:5-19
+MERGED from [com.google.android.gms:play-services-analytics-impl:10.0.1] /Users/ipshamohanty/.android/build-cache/1cd5f2b32eb88019271618e55e751a775ff24c4d/output/AndroidManifest.xml:26:5-19
+MERGED from [com.google.android.gms:play-services-vision:10.0.1] /Users/ipshamohanty/.android/build-cache/05dd207c753fe40e5d3866e8fbe21483a968526d/output/AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-identity:10.0.1] /Users/ipshamohanty/.android/build-cache/1d3dc63714af7ea75fa74f46490f8454354553ba/output/AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-maps:10.0.1] /Users/ipshamohanty/.android/build-cache/8873913520f9cdde9ce4a080d8c7ddd52e37e4b7/output/AndroidManifest.xml:24:5-19
+MERGED from [com.google.android.gms:play-services-wearable:10.0.1] /Users/ipshamohanty/.android/build-cache/58057c144315b0e208f5a6925ba66ea532118f8b/output/AndroidManifest.xml:18:5-19
+MERGED from [com.google.android.gms:play-services-base:10.0.1] /Users/ipshamohanty/.android/build-cache/35583418f31040b46284dd78bc0c18b852e8235d/output/AndroidManifest.xml:18:5-20:19
+MERGED from [com.google.maps.android:android-maps-utils:0.3.4] /Users/ipshamohanty/.android/build-cache/20054a0ef3acea7eda002cc4bdfa1d3db16aa47b/output/AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:design:25.0.0] /Users/ipshamohanty/.android/build-cache/efb276c7b9080927b6d2d12350c2d009bfaf846d/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:transition:25.0.0] /Users/ipshamohanty/.android/build-cache/ff035d818a925661498d4f34cd5765f4365bbd1e/output/AndroidManifest.xml:22:5-20
+MERGED from [com.facebook.android:facebook-android-sdk:4.20.0] /Users/ipshamohanty/.android/build-cache/5a25972b1d79b06626e5ca4b690b1f8f1242ea69/output/AndroidManifest.xml:28:5-48:19
+MERGED from [com.android.support:appcompat-v7:25.0.0] /Users/ipshamohanty/.android/build-cache/34e1dd446e41685bfab8c0fbbe756a3516d3a07f/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.0.0] /Users/ipshamohanty/.android/build-cache/48c0962cf8996d756de19e3883a7aba09e2feed7/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:25.0.0] /Users/ipshamohanty/.android/build-cache/d601f47d3c419863fe2e867b19cce18529f457eb/output/AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:cardview-v7:25.0.0] /Users/ipshamohanty/.android/build-cache/ab8a26a5830a050265a8e60690b0a8377812fe4e/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:customtabs:25.0.0] /Users/ipshamohanty/.android/build-cache/a321833549520ff620e9e1d6ed9625eedc602894/output/AndroidManifest.xml:22:5-20
+MERGED from [com.google.firebase:firebase-core:10.0.1] /Users/ipshamohanty/.android/build-cache/537d74a530044f5c172d7f3de016f6f08230cac8/output/AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/4687dc7c705de00cf8d5104b8332909bf3c926f1/output/AndroidManifest.xml:24:5-33:19
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] /Users/ipshamohanty/.android/build-cache/032a75eb1e56b4106deccd3a762f340f7645ed57/output/AndroidManifest.xml:24:5-28:19
+MERGED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:28:5-50:19
+MERGED from [com.google.firebase:firebase-common:10.0.1] /Users/ipshamohanty/.android/build-cache/ceeb9d78fda779ef8a39ec21adc40712fecb7e66/output/AndroidManifest.xml:4:5-7:19
+MERGED from [com.google.android.gms:play-services-tasks:10.0.1] /Users/ipshamohanty/.android/build-cache/6cd204ab2502582c618cac694d1130a1cfb49925/output/AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-basement:10.0.1] /Users/ipshamohanty/.android/build-cache/a68747a1bc33e8220e9060291fd7441a55145ec5/output/AndroidManifest.xml:19:5-21:19
+MERGED from [com.android.support:support-v4:25.0.0] /Users/ipshamohanty/.android/build-cache/9276b7a0cec807e19e33d604a635cd1cc951c79f/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:25.0.0] /Users/ipshamohanty/.android/build-cache/724d1d15251de960e9a8114cc1221fd02687d407/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.0.0] /Users/ipshamohanty/.android/build-cache/abcea079253789eaa1929e8a84bcad472a19edf0/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.0.0] /Users/ipshamohanty/.android/build-cache/9a011c639a76f24c6f3d325efa3aaa32c7e2f8fe/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.0.0] /Users/ipshamohanty/.android/build-cache/165ee13d8c03af47ab43fac8f215197e2afc5744/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:25.0.0] /Users/ipshamohanty/.android/build-cache/afe09b4eb7ae919c8d61a2bb092f430b6a07fc55/output/AndroidManifest.xml:25:5-20
+	android:label
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:40:9-41
+	android:supportsRtl
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:41:9-35
+	android:allowBackup
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:38:9-35
+	android:icon
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:39:9-43
+	android:theme
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:42:9-40
+	android:name
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:37:9-57
+activity#com.example.pedestrian.Splash
+ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:45:9-53:20
+	android:configChanges
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:46:13-74
+	android:name
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:45:19-41
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:48:13-52:29
+action#android.intent.action.MAIN
+ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:49:17-69
+	android:name
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:49:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:51:17-77
+	android:name
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:51:27-74
+meta-data#com.google.android.geo.API_KEY
+ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:62:9-64:55
+	android:value
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:64:13-52
+	android:name
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:63:13-58
+activity#com.example.pedestrian.LoginActivity
+ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:66:9-68:36
+	android:screenOrientation
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:67:13-49
+	android:label
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:68:13-34
+	android:name
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:66:19-48
+activity#com.example.pedestrian.MapsActivity
+ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:70:9-73:62
+	android:screenOrientation
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:73:13-49
+	android:label
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:72:13-56
+	android:name
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:71:13-41
+meta-data#com.google.android.gms.version
+ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:75:9-77:69
+MERGED from [com.google.android.gms:play-services-basement:10.0.1] /Users/ipshamohanty/.android/build-cache/a68747a1bc33e8220e9060291fd7441a55145ec5/output/AndroidManifest.xml:20:9-121
+	android:value
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:77:13-66
+	android:name
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:76:13-58
+meta-data#com.facebook.sdk.ApplicationId
+ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:79:9-80:54
+	android:value
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:80:13-52
+	android:name
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:79:20-65
+service#com.example.pedestrian.Myservice
+ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:82:9-45
+	android:name
+		ADDED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml:82:18-43
+uses-sdk
+INJECTED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:multidex:1.0.1] /Users/ipshamohanty/.android/build-cache/fb78cfb066443a6519c950cc87bc83b03b869510/output/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services:10.0.1] /Users/ipshamohanty/.android/build-cache/bd9b51ca05f4e3e4aeaef6433c11f7922b419752/output/AndroidManifest.xml:4:5-42
+MERGED from [com.google.android.gms:play-services-ads:10.0.1] /Users/ipshamohanty/.android/build-cache/dcdd837954ad058ca35da6775b718f6597b4e9f9/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-ads-lite:10.0.1] /Users/ipshamohanty/.android/build-cache/e1bc73d3392a3ad9e1a5bd58587aec54d052e57a/output/AndroidManifest.xml:22:5-42
+MERGED from [com.google.android.gms:play-services-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/055499279f7dcd6e06c89966207de25a2122846e/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-appinvite:10.0.1] /Users/ipshamohanty/.android/build-cache/a31e1eff193204ab58df35b87497c8374fb2199f/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-auth:10.0.1] /Users/ipshamohanty/.android/build-cache/0b1e3ba0410f491d377ba985ac6ebbd0e7258af8/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-auth-base:10.0.1] /Users/ipshamohanty/.android/build-cache/a09c1d1afde335b3a52e474d17b7825a39a00bf0/output/AndroidManifest.xml:4:5-42
+MERGED from [com.google.android.gms:play-services-cast-framework:10.0.1] /Users/ipshamohanty/.android/build-cache/1bd3170fe1685db258c97a71870efbda00ba9ec7/output/AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-cast:10.0.1] /Users/ipshamohanty/.android/build-cache/231c1fa5cd92d176f60dd5dd7721b4c562210a24/output/AndroidManifest.xml:17:5-42
+MERGED from [com.android.support:mediarouter-v7:24.0.0] /Users/ipshamohanty/.android/build-cache/5a7b0046029c4b7d86c467cd73ff1bb9fb589630/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:palette-v7:24.0.0] /Users/ipshamohanty/.android/build-cache/d80d36bbef54ec6f978c66c8835064f1cb920a07/output/AndroidManifest.xml:20:5-43
+MERGED from [com.google.android.gms:play-services-clearcut:10.0.1] /Users/ipshamohanty/.android/build-cache/9891ac84ccc23170cd4b74438b3958bc30bcb8e7/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.firebase:firebase-config:10.0.1] /Users/ipshamohanty/.android/build-cache/d369834da6021e36d576e94fd858215e74cb855a/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-awareness:10.0.1] /Users/ipshamohanty/.android/build-cache/62428bcf8f09130e6924bfc2c6133d81a90831a4/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.firebase:firebase-crash:10.0.1] /Users/ipshamohanty/.android/build-cache/21b6f3ae6e770996ad63f6e6a5889a44a9d6ca1a/output/AndroidManifest.xml:20:5-42
+MERGED from [com.google.firebase:firebase-auth:10.0.1] /Users/ipshamohanty/.android/build-cache/e368c125d6aeeab7b66fb72e282c389ce6bf752a/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.firebase:firebase-database:10.0.1] /Users/ipshamohanty/.android/build-cache/89b48041a1ddcf07bfe599b0cecf552297162291/output/AndroidManifest.xml:3:5-42
+MERGED from [com.google.firebase:firebase-database-connection:10.0.1] /Users/ipshamohanty/.android/build-cache/13d6e70d280c5b4f36a03adccfe5301ded528b5d/output/AndroidManifest.xml:3:5-42
+MERGED from [com.google.firebase:firebase-messaging:10.0.1] /Users/ipshamohanty/.android/build-cache/6173fd14fc138cc6fb99812e4f08ca9d0207655f/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.firebase:firebase-storage:10.0.1] /Users/ipshamohanty/.android/build-cache/81613c43d528a891d59b4d50880d873f3afe37e0/output/AndroidManifest.xml:3:5-42
+MERGED from [com.google.firebase:firebase-storage-common:10.0.1] /Users/ipshamohanty/.android/build-cache/3267e81d93447007bb72335c2e57f4e1630c1520/output/AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-fitness:10.0.1] /Users/ipshamohanty/.android/build-cache/385399bab80fb88bf8820289a64389d76e478bbb/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-games:10.0.1] /Users/ipshamohanty/.android/build-cache/eb3090d962ba5efb3ff24dab5be51cea3a413f08/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-drive:10.0.1] /Users/ipshamohanty/.android/build-cache/e5a4ab6c69ef9b7b15a8d00e81107e197ee62df4/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-gass:10.0.1] /Users/ipshamohanty/.android/build-cache/4a77d5a7e866d5a97eb6fc8694c1ffbcb1f44f65/output/AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-gcm:10.0.1] /Users/ipshamohanty/.android/build-cache/03d646db2f2d8d4c843e3e25021aa938811699e7/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.firebase:firebase-appindexing:10.0.1] /Users/ipshamohanty/.android/build-cache/460f43ee9c4686ea97cc59ed6a9cddcd345dd3a3/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/2b265c8b426c59502fff0a8c91ddd7c1bde73dc4/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-instantapps:10.0.1] /Users/ipshamohanty/.android/build-cache/80c5eca6a8dcb17f3c507cd710c16b1d92faf83b/output/AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-location:10.0.1] /Users/ipshamohanty/.android/build-cache/56422407f4cdf49b95f9164f7f73c365fb3e34ef/output/AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-nearby:10.0.1] /Users/ipshamohanty/.android/build-cache/a7cc67c580a00ea7300c3ba8fa5b13b88b9a7d08/output/AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-panorama:10.0.1] /Users/ipshamohanty/.android/build-cache/4587719e96948e27d3017dacad8259e2d7b4b31c/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-places:10.0.1] /Users/ipshamohanty/.android/build-cache/d102c4f493af42ff97874e0c04d624c486773b8c/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-plus:10.0.1] /Users/ipshamohanty/.android/build-cache/efe2248671af14601aa428525167044a2e0dffef/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-safetynet:10.0.1] /Users/ipshamohanty/.android/build-cache/5ac9a90095328aba42a483e855c985f676bf03cb/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-tagmanager:10.0.1] /Users/ipshamohanty/.android/build-cache/44fce61d83d5891fce6a8e6c28bc6cf38eec03c5/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] /Users/ipshamohanty/.android/build-cache/511e4d0a5aadd74cd39003f942c5fb9ba89a93e9/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-tagmanager-v4-impl:10.0.1] /Users/ipshamohanty/.android/build-cache/8bb0b99c7ee87cd806cd0d30c190a243e94cc76d/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-analytics-impl:10.0.1] /Users/ipshamohanty/.android/build-cache/1cd5f2b32eb88019271618e55e751a775ff24c4d/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-vision:10.0.1] /Users/ipshamohanty/.android/build-cache/05dd207c753fe40e5d3866e8fbe21483a968526d/output/AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-wallet:10.0.1] /Users/ipshamohanty/.android/build-cache/6e176c8ab119af08b596ecc39a57915687c19ec5/output/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-identity:10.0.1] /Users/ipshamohanty/.android/build-cache/1d3dc63714af7ea75fa74f46490f8454354553ba/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-maps:10.0.1] /Users/ipshamohanty/.android/build-cache/8873913520f9cdde9ce4a080d8c7ddd52e37e4b7/output/AndroidManifest.xml:23:5-42
+MERGED from [com.google.android.gms:play-services-wearable:10.0.1] /Users/ipshamohanty/.android/build-cache/58057c144315b0e208f5a6925ba66ea532118f8b/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.android.gms:play-services-base:10.0.1] /Users/ipshamohanty/.android/build-cache/35583418f31040b46284dd78bc0c18b852e8235d/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.maps.android:android-maps-utils:0.3.4] /Users/ipshamohanty/.android/build-cache/20054a0ef3acea7eda002cc4bdfa1d3db16aa47b/output/AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:design:25.0.0] /Users/ipshamohanty/.android/build-cache/efb276c7b9080927b6d2d12350c2d009bfaf846d/output/AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:recyclerview-v7:25.0.0] /Users/ipshamohanty/.android/build-cache/18d2f40d7a9863073bc9e4ba1dee375e08f5b992/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:transition:25.0.0] /Users/ipshamohanty/.android/build-cache/ff035d818a925661498d4f34cd5765f4365bbd1e/output/AndroidManifest.xml:20:5-44
+MERGED from [com.facebook.android:facebook-android-sdk:4.20.0] /Users/ipshamohanty/.android/build-cache/5a25972b1d79b06626e5ca4b690b1f8f1242ea69/output/AndroidManifest.xml:24:5-26:41
+MERGED from [com.android.support:appcompat-v7:25.0.0] /Users/ipshamohanty/.android/build-cache/34e1dd446e41685bfab8c0fbbe756a3516d3a07f/output/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.0.0] /Users/ipshamohanty/.android/build-cache/48c0962cf8996d756de19e3883a7aba09e2feed7/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.0.0] /Users/ipshamohanty/.android/build-cache/d601f47d3c419863fe2e867b19cce18529f457eb/output/AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:cardview-v7:25.0.0] /Users/ipshamohanty/.android/build-cache/ab8a26a5830a050265a8e60690b0a8377812fe4e/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:customtabs:25.0.0] /Users/ipshamohanty/.android/build-cache/a321833549520ff620e9e1d6ed9625eedc602894/output/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-core:10.0.1] /Users/ipshamohanty/.android/build-cache/537d74a530044f5c172d7f3de016f6f08230cac8/output/AndroidManifest.xml:4:5-42
+MERGED from [com.google.firebase:firebase-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/4687dc7c705de00cf8d5104b8332909bf3c926f1/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] /Users/ipshamohanty/.android/build-cache/032a75eb1e56b4106deccd3a762f340f7645ed57/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.firebase:firebase-common:10.0.1] /Users/ipshamohanty/.android/build-cache/ceeb9d78fda779ef8a39ec21adc40712fecb7e66/output/AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-tasks:10.0.1] /Users/ipshamohanty/.android/build-cache/6cd204ab2502582c618cac694d1130a1cfb49925/output/AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-basement:10.0.1] /Users/ipshamohanty/.android/build-cache/a68747a1bc33e8220e9060291fd7441a55145ec5/output/AndroidManifest.xml:17:5-42
+MERGED from [com.android.support:support-v4:25.0.0] /Users/ipshamohanty/.android/build-cache/9276b7a0cec807e19e33d604a635cd1cc951c79f/output/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.0.0] /Users/ipshamohanty/.android/build-cache/724d1d15251de960e9a8114cc1221fd02687d407/output/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.0.0] /Users/ipshamohanty/.android/build-cache/abcea079253789eaa1929e8a84bcad472a19edf0/output/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.0.0] /Users/ipshamohanty/.android/build-cache/9a011c639a76f24c6f3d325efa3aaa32c7e2f8fe/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.0.0] /Users/ipshamohanty/.android/build-cache/165ee13d8c03af47ab43fac8f215197e2afc5744/output/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:25.0.0] /Users/ipshamohanty/.android/build-cache/afe09b4eb7ae919c8d61a2bb092f430b6a07fc55/output/AndroidManifest.xml:21:5-23:58
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:25.0.0] /Users/ipshamohanty/.android/build-cache/efb276c7b9080927b6d2d12350c2d009bfaf846d/output/AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		INJECTED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/ipshamohanty/Downloads/Pedestrian/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.google.android.gms:play-services-ads-lite:10.0.1] /Users/ipshamohanty/.android/build-cache/e1bc73d3392a3ad9e1a5bd58587aec54d052e57a/output/AndroidManifest.xml:20:5-78
+MERGED from [com.google.android.gms:play-services-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/055499279f7dcd6e06c89966207de25a2122846e/output/AndroidManifest.xml:21:5-78
+MERGED from [com.google.android.gms:play-services-nearby:10.0.1] /Users/ipshamohanty/.android/build-cache/a7cc67c580a00ea7300c3ba8fa5b13b88b9a7d08/output/AndroidManifest.xml:4:5-78
+MERGED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] /Users/ipshamohanty/.android/build-cache/511e4d0a5aadd74cd39003f942c5fb9ba89a93e9/output/AndroidManifest.xml:21:5-78
+MERGED from [com.google.android.gms:play-services-analytics-impl:10.0.1] /Users/ipshamohanty/.android/build-cache/1cd5f2b32eb88019271618e55e751a775ff24c4d/output/AndroidManifest.xml:21:5-78
+MERGED from [com.google.android.gms:play-services-maps:10.0.1] /Users/ipshamohanty/.android/build-cache/8873913520f9cdde9ce4a080d8c7ddd52e37e4b7/output/AndroidManifest.xml:19:5-78
+MERGED from [com.google.firebase:firebase-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/4687dc7c705de00cf8d5104b8332909bf3c926f1/output/AndroidManifest.xml:21:5-78
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] /Users/ipshamohanty/.android/build-cache/032a75eb1e56b4106deccd3a762f340f7645ed57/output/AndroidManifest.xml:21:5-78
+MERGED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:19:5-78
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:10.0.1] /Users/ipshamohanty/.android/build-cache/e1bc73d3392a3ad9e1a5bd58587aec54d052e57a/output/AndroidManifest.xml:20:22-76
+activity#com.google.android.gms.ads.AdActivity
+ADDED from [com.google.android.gms:play-services-ads-lite:10.0.1] /Users/ipshamohanty/.android/build-cache/e1bc73d3392a3ad9e1a5bd58587aec54d052e57a/output/AndroidManifest.xml:25:9-232
+	android:configChanges
+		ADDED from [com.google.android.gms:play-services-ads-lite:10.0.1] /Users/ipshamohanty/.android/build-cache/e1bc73d3392a3ad9e1a5bd58587aec54d052e57a/output/AndroidManifest.xml:25:72-181
+	android:theme
+		ADDED from [com.google.android.gms:play-services-ads-lite:10.0.1] /Users/ipshamohanty/.android/build-cache/e1bc73d3392a3ad9e1a5bd58587aec54d052e57a/output/AndroidManifest.xml:25:182-230
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:10.0.1] /Users/ipshamohanty/.android/build-cache/e1bc73d3392a3ad9e1a5bd58587aec54d052e57a/output/AndroidManifest.xml:25:19-71
+activity#com.google.android.gms.ads.purchase.InAppPurchaseActivity
+ADDED from [com.google.android.gms:play-services-ads-lite:10.0.1] /Users/ipshamohanty/.android/build-cache/e1bc73d3392a3ad9e1a5bd58587aec54d052e57a/output/AndroidManifest.xml:26:9-131
+	android:theme
+		ADDED from [com.google.android.gms:play-services-ads-lite:10.0.1] /Users/ipshamohanty/.android/build-cache/e1bc73d3392a3ad9e1a5bd58587aec54d052e57a/output/AndroidManifest.xml:26:92-129
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:10.0.1] /Users/ipshamohanty/.android/build-cache/e1bc73d3392a3ad9e1a5bd58587aec54d052e57a/output/AndroidManifest.xml:26:19-91
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [com.google.android.gms:play-services-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/055499279f7dcd6e06c89966207de25a2122846e/output/AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-analytics-impl:10.0.1] /Users/ipshamohanty/.android/build-cache/1cd5f2b32eb88019271618e55e751a775ff24c4d/output/AndroidManifest.xml:24:5-67
+MERGED from [com.google.firebase:firebase-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/4687dc7c705de00cf8d5104b8332909bf3c926f1/output/AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] /Users/ipshamohanty/.android/build-cache/032a75eb1e56b4106deccd3a762f340f7645ed57/output/AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:21:5-67
+	android:name
+		ADDED from [com.google.android.gms:play-services-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/055499279f7dcd6e06c89966207de25a2122846e/output/AndroidManifest.xml:24:22-65
+activity#com.google.android.gms.appinvite.PreviewActivity
+ADDED from [com.google.android.gms:play-services-appinvite:10.0.1] /Users/ipshamohanty/.android/build-cache/a31e1eff193204ab58df35b87497c8374fb2199f/output/AndroidManifest.xml:20:9-25:20
+	android:exported
+		ADDED from [com.google.android.gms:play-services-appinvite:10.0.1] /Users/ipshamohanty/.android/build-cache/a31e1eff193204ab58df35b87497c8374fb2199f/output/AndroidManifest.xml:20:51-74
+	android:theme
+		ADDED from [com.google.android.gms:play-services-appinvite:10.0.1] /Users/ipshamohanty/.android/build-cache/a31e1eff193204ab58df35b87497c8374fb2199f/output/AndroidManifest.xml:20:75-121
+	android:name
+		ADDED from [com.google.android.gms:play-services-appinvite:10.0.1] /Users/ipshamohanty/.android/build-cache/a31e1eff193204ab58df35b87497c8374fb2199f/output/AndroidManifest.xml:20:19-50
+intent-filter#android.intent.category.DEFAULT+com.google.android.gms.appinvite.ACTION_PREVIEW
+ADDED from [com.google.android.gms:play-services-appinvite:10.0.1] /Users/ipshamohanty/.android/build-cache/a31e1eff193204ab58df35b87497c8374fb2199f/output/AndroidManifest.xml:21:13-24:29
+action#com.google.android.gms.appinvite.ACTION_PREVIEW
+ADDED from [com.google.android.gms:play-services-appinvite:10.0.1] /Users/ipshamohanty/.android/build-cache/a31e1eff193204ab58df35b87497c8374fb2199f/output/AndroidManifest.xml:22:17-89
+	android:name
+		ADDED from [com.google.android.gms:play-services-appinvite:10.0.1] /Users/ipshamohanty/.android/build-cache/a31e1eff193204ab58df35b87497c8374fb2199f/output/AndroidManifest.xml:22:25-87
+category#android.intent.category.DEFAULT
+ADDED from [com.google.android.gms:play-services-appinvite:10.0.1] /Users/ipshamohanty/.android/build-cache/a31e1eff193204ab58df35b87497c8374fb2199f/output/AndroidManifest.xml:23:17-75
+	android:name
+		ADDED from [com.google.android.gms:play-services-appinvite:10.0.1] /Users/ipshamohanty/.android/build-cache/a31e1eff193204ab58df35b87497c8374fb2199f/output/AndroidManifest.xml:23:27-73
+activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
+ADDED from [com.google.android.gms:play-services-auth:10.0.1] /Users/ipshamohanty/.android/build-cache/0b1e3ba0410f491d377ba985ac6ebbd0e7258af8/output/AndroidManifest.xml:20:9-189
+	android:excludeFromRecents
+		ADDED from [com.google.android.gms:play-services-auth:10.0.1] /Users/ipshamohanty/.android/build-cache/0b1e3ba0410f491d377ba985ac6ebbd0e7258af8/output/AndroidManifest.xml:20:129-162
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:10.0.1] /Users/ipshamohanty/.android/build-cache/0b1e3ba0410f491d377ba985ac6ebbd0e7258af8/output/AndroidManifest.xml:20:163-187
+	android:theme
+		ADDED from [com.google.android.gms:play-services-auth:10.0.1] /Users/ipshamohanty/.android/build-cache/0b1e3ba0410f491d377ba985ac6ebbd0e7258af8/output/AndroidManifest.xml:20:69-128
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:10.0.1] /Users/ipshamohanty/.android/build-cache/0b1e3ba0410f491d377ba985ac6ebbd0e7258af8/output/AndroidManifest.xml:20:19-68
+service#com.google.android.gms.auth.api.signin.RevocationBoundService
+ADDED from [com.google.android.gms:play-services-auth:10.0.1] /Users/ipshamohanty/.android/build-cache/0b1e3ba0410f491d377ba985ac6ebbd0e7258af8/output/AndroidManifest.xml:24:9-184
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:10.0.1] /Users/ipshamohanty/.android/build-cache/0b1e3ba0410f491d377ba985ac6ebbd0e7258af8/output/AndroidManifest.xml:24:64-87
+	android:permission
+		ADDED from [com.google.android.gms:play-services-auth:10.0.1] /Users/ipshamohanty/.android/build-cache/0b1e3ba0410f491d377ba985ac6ebbd0e7258af8/output/AndroidManifest.xml:24:88-182
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:10.0.1] /Users/ipshamohanty/.android/build-cache/0b1e3ba0410f491d377ba985ac6ebbd0e7258af8/output/AndroidManifest.xml:24:18-63
+receiver#com.google.android.gms.cast.framework.media.MediaIntentReceiver
+ADDED from [com.google.android.gms:play-services-cast-framework:10.0.1] /Users/ipshamohanty/.android/build-cache/1bd3170fe1685db258c97a71870efbda00ba9ec7/output/AndroidManifest.xml:5:9-99
+	android:name
+		ADDED from [com.google.android.gms:play-services-cast-framework:10.0.1] /Users/ipshamohanty/.android/build-cache/1bd3170fe1685db258c97a71870efbda00ba9ec7/output/AndroidManifest.xml:5:19-97
+service#com.google.android.gms.cast.framework.media.MediaNotificationService
+ADDED from [com.google.android.gms:play-services-cast-framework:10.0.1] /Users/ipshamohanty/.android/build-cache/1bd3170fe1685db258c97a71870efbda00ba9ec7/output/AndroidManifest.xml:6:9-103
+	android:name
+		ADDED from [com.google.android.gms:play-services-cast-framework:10.0.1] /Users/ipshamohanty/.android/build-cache/1bd3170fe1685db258c97a71870efbda00ba9ec7/output/AndroidManifest.xml:6:18-101
+service#com.google.android.gms.cast.framework.ReconnectionService
+ADDED from [com.google.android.gms:play-services-cast-framework:10.0.1] /Users/ipshamohanty/.android/build-cache/1bd3170fe1685db258c97a71870efbda00ba9ec7/output/AndroidManifest.xml:7:9-92
+	android:name
+		ADDED from [com.google.android.gms:play-services-cast-framework:10.0.1] /Users/ipshamohanty/.android/build-cache/1bd3170fe1685db258c97a71870efbda00ba9ec7/output/AndroidManifest.xml:7:18-90
+service#com.google.firebase.messaging.FirebaseMessagingService
+ADDED from [com.google.firebase:firebase-messaging:10.0.1] /Users/ipshamohanty/.android/build-cache/6173fd14fc138cc6fb99812e4f08ca9d0207655f/output/AndroidManifest.xml:23:9-27:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-messaging:10.0.1] /Users/ipshamohanty/.android/build-cache/6173fd14fc138cc6fb99812e4f08ca9d0207655f/output/AndroidManifest.xml:23:88-111
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:10.0.1] /Users/ipshamohanty/.android/build-cache/6173fd14fc138cc6fb99812e4f08ca9d0207655f/output/AndroidManifest.xml:23:18-87
+intent-filter#com.google.firebase.MESSAGING_EVENT
+ADDED from [com.google.firebase:firebase-messaging:10.0.1] /Users/ipshamohanty/.android/build-cache/6173fd14fc138cc6fb99812e4f08ca9d0207655f/output/AndroidManifest.xml:24:13-26:29
+	android:priority
+		ADDED from [com.google.firebase:firebase-messaging:10.0.1] /Users/ipshamohanty/.android/build-cache/6173fd14fc138cc6fb99812e4f08ca9d0207655f/output/AndroidManifest.xml:24:28-51
+action#com.google.firebase.MESSAGING_EVENT
+ADDED from [com.google.firebase:firebase-messaging:10.0.1] /Users/ipshamohanty/.android/build-cache/6173fd14fc138cc6fb99812e4f08ca9d0207655f/output/AndroidManifest.xml:25:17-77
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:10.0.1] /Users/ipshamohanty/.android/build-cache/6173fd14fc138cc6fb99812e4f08ca9d0207655f/output/AndroidManifest.xml:25:25-75
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from [com.google.android.gms:play-services-gcm:10.0.1] /Users/ipshamohanty/.android/build-cache/03d646db2f2d8d4c843e3e25021aa938811699e7/output/AndroidManifest.xml:20:5-81
+MERGED from [com.google.android.gms:play-services-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/2b265c8b426c59502fff0a8c91ddd7c1bde73dc4/output/AndroidManifest.xml:20:5-81
+MERGED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:22:5-81
+	android:name
+		ADDED from [com.google.android.gms:play-services-gcm:10.0.1] /Users/ipshamohanty/.android/build-cache/03d646db2f2d8d4c843e3e25021aa938811699e7/output/AndroidManifest.xml:20:22-79
+service#com.google.android.gms.tagmanager.TagManagerService
+ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] /Users/ipshamohanty/.android/build-cache/511e4d0a5aadd74cd39003f942c5fb9ba89a93e9/output/AndroidManifest.xml:24:9-134
+	android:enabled
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] /Users/ipshamohanty/.android/build-cache/511e4d0a5aadd74cd39003f942c5fb9ba89a93e9/output/AndroidManifest.xml:24:110-132
+	android:exported
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] /Users/ipshamohanty/.android/build-cache/511e4d0a5aadd74cd39003f942c5fb9ba89a93e9/output/AndroidManifest.xml:24:85-109
+	android:name
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] /Users/ipshamohanty/.android/build-cache/511e4d0a5aadd74cd39003f942c5fb9ba89a93e9/output/AndroidManifest.xml:24:18-84
+activity#com.google.android.gms.tagmanager.TagManagerPreviewActivity
+ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] /Users/ipshamohanty/.android/build-cache/511e4d0a5aadd74cd39003f942c5fb9ba89a93e9/output/AndroidManifest.xml:25:9-32:20
+	android:noHistory
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] /Users/ipshamohanty/.android/build-cache/511e4d0a5aadd74cd39003f942c5fb9ba89a93e9/output/AndroidManifest.xml:25:94-118
+	android:name
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] /Users/ipshamohanty/.android/build-cache/511e4d0a5aadd74cd39003f942c5fb9ba89a93e9/output/AndroidManifest.xml:25:19-93
+intent-filter#android.intent.action.VIEW+android.intent.category.BROWSABLE+android.intent.category.DEFAULT
+ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] /Users/ipshamohanty/.android/build-cache/511e4d0a5aadd74cd39003f942c5fb9ba89a93e9/output/AndroidManifest.xml:26:13-31:29
+data
+ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] /Users/ipshamohanty/.android/build-cache/511e4d0a5aadd74cd39003f942c5fb9ba89a93e9/output/AndroidManifest.xml:27:17-71
+	android:scheme
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] /Users/ipshamohanty/.android/build-cache/511e4d0a5aadd74cd39003f942c5fb9ba89a93e9/output/AndroidManifest.xml:27:23-69
+action#android.intent.action.VIEW
+ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] /Users/ipshamohanty/.android/build-cache/511e4d0a5aadd74cd39003f942c5fb9ba89a93e9/output/AndroidManifest.xml:28:17-68
+	android:name
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] /Users/ipshamohanty/.android/build-cache/511e4d0a5aadd74cd39003f942c5fb9ba89a93e9/output/AndroidManifest.xml:28:25-66
+category#android.intent.category.BROWSABLE
+ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] /Users/ipshamohanty/.android/build-cache/511e4d0a5aadd74cd39003f942c5fb9ba89a93e9/output/AndroidManifest.xml:30:17-77
+	android:name
+		ADDED from [com.google.android.gms:play-services-tagmanager-api:10.0.1] /Users/ipshamohanty/.android/build-cache/511e4d0a5aadd74cd39003f942c5fb9ba89a93e9/output/AndroidManifest.xml:30:27-75
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:10.0.1] /Users/ipshamohanty/.android/build-cache/8873913520f9cdde9ce4a080d8c7ddd52e37e4b7/output/AndroidManifest.xml:21:5-77
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:10.0.1] /Users/ipshamohanty/.android/build-cache/8873913520f9cdde9ce4a080d8c7ddd52e37e4b7/output/AndroidManifest.xml:21:19-51
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:10.0.1] /Users/ipshamohanty/.android/build-cache/8873913520f9cdde9ce4a080d8c7ddd52e37e4b7/output/AndroidManifest.xml:21:52-75
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:10.0.1] /Users/ipshamohanty/.android/build-cache/35583418f31040b46284dd78bc0c18b852e8235d/output/AndroidManifest.xml:19:9-172
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:10.0.1] /Users/ipshamohanty/.android/build-cache/35583418f31040b46284dd78bc0c18b852e8235d/output/AndroidManifest.xml:19:146-170
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:10.0.1] /Users/ipshamohanty/.android/build-cache/35583418f31040b46284dd78bc0c18b852e8235d/output/AndroidManifest.xml:19:86-145
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:10.0.1] /Users/ipshamohanty/.android/build-cache/35583418f31040b46284dd78bc0c18b852e8235d/output/AndroidManifest.xml:19:19-85
+activity#com.facebook.FacebookActivity
+ADDED from [com.facebook.android:facebook-android-sdk:4.20.0] /Users/ipshamohanty/.android/build-cache/5a25972b1d79b06626e5ca4b690b1f8f1242ea69/output/AndroidManifest.xml:29:9-32:66
+	android:configChanges
+		ADDED from [com.facebook.android:facebook-android-sdk:4.20.0] /Users/ipshamohanty/.android/build-cache/5a25972b1d79b06626e5ca4b690b1f8f1242ea69/output/AndroidManifest.xml:31:13-96
+	android:theme
+		ADDED from [com.facebook.android:facebook-android-sdk:4.20.0] /Users/ipshamohanty/.android/build-cache/5a25972b1d79b06626e5ca4b690b1f8f1242ea69/output/AndroidManifest.xml:32:13-63
+	android:name
+		ADDED from [com.facebook.android:facebook-android-sdk:4.20.0] /Users/ipshamohanty/.android/build-cache/5a25972b1d79b06626e5ca4b690b1f8f1242ea69/output/AndroidManifest.xml:30:13-57
+activity#com.facebook.CustomTabMainActivity
+ADDED from [com.facebook.android:facebook-android-sdk:4.20.0] /Users/ipshamohanty/.android/build-cache/5a25972b1d79b06626e5ca4b690b1f8f1242ea69/output/AndroidManifest.xml:33:9-71
+	android:name
+		ADDED from [com.facebook.android:facebook-android-sdk:4.20.0] /Users/ipshamohanty/.android/build-cache/5a25972b1d79b06626e5ca4b690b1f8f1242ea69/output/AndroidManifest.xml:33:19-68
+provider#com.facebook.internal.FacebookInitProvider
+ADDED from [com.facebook.android:facebook-android-sdk:4.20.0] /Users/ipshamohanty/.android/build-cache/5a25972b1d79b06626e5ca4b690b1f8f1242ea69/output/AndroidManifest.xml:44:9-47:40
+	android:authorities
+		ADDED from [com.facebook.android:facebook-android-sdk:4.20.0] /Users/ipshamohanty/.android/build-cache/5a25972b1d79b06626e5ca4b690b1f8f1242ea69/output/AndroidManifest.xml:46:13-72
+	android:exported
+		ADDED from [com.facebook.android:facebook-android-sdk:4.20.0] /Users/ipshamohanty/.android/build-cache/5a25972b1d79b06626e5ca4b690b1f8f1242ea69/output/AndroidManifest.xml:47:13-37
+	android:name
+		ADDED from [com.facebook.android:facebook-android-sdk:4.20.0] /Users/ipshamohanty/.android/build-cache/5a25972b1d79b06626e5ca4b690b1f8f1242ea69/output/AndroidManifest.xml:45:13-70
+receiver#com.google.android.gms.measurement.AppMeasurementReceiver
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/4687dc7c705de00cf8d5104b8332909bf3c926f1/output/AndroidManifest.xml:25:7-26:18
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] /Users/ipshamohanty/.android/build-cache/032a75eb1e56b4106deccd3a762f340f7645ed57/output/AndroidManifest.xml:25:7-26:18
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/4687dc7c705de00cf8d5104b8332909bf3c926f1/output/AndroidManifest.xml:25:90-112
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/4687dc7c705de00cf8d5104b8332909bf3c926f1/output/AndroidManifest.xml:25:113-137
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/4687dc7c705de00cf8d5104b8332909bf3c926f1/output/AndroidManifest.xml:25:17-89
+receiver#com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/4687dc7c705de00cf8d5104b8332909bf3c926f1/output/AndroidManifest.xml:27:7-31:18
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/4687dc7c705de00cf8d5104b8332909bf3c926f1/output/AndroidManifest.xml:27:162-184
+	android:permission
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/4687dc7c705de00cf8d5104b8332909bf3c926f1/output/AndroidManifest.xml:27:105-161
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/4687dc7c705de00cf8d5104b8332909bf3c926f1/output/AndroidManifest.xml:27:17-104
+intent-filter#com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/4687dc7c705de00cf8d5104b8332909bf3c926f1/output/AndroidManifest.xml:28:11-30:27
+action#com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/4687dc7c705de00cf8d5104b8332909bf3c926f1/output/AndroidManifest.xml:29:15-76
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/4687dc7c705de00cf8d5104b8332909bf3c926f1/output/AndroidManifest.xml:29:23-74
+service#com.google.android.gms.measurement.AppMeasurementService
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/4687dc7c705de00cf8d5104b8332909bf3c926f1/output/AndroidManifest.xml:32:7-137
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] /Users/ipshamohanty/.android/build-cache/032a75eb1e56b4106deccd3a762f340f7645ed57/output/AndroidManifest.xml:27:7-137
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/4687dc7c705de00cf8d5104b8332909bf3c926f1/output/AndroidManifest.xml:32:88-110
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/4687dc7c705de00cf8d5104b8332909bf3c926f1/output/AndroidManifest.xml:32:111-135
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/ipshamohanty/.android/build-cache/4687dc7c705de00cf8d5104b8332909bf3c926f1/output/AndroidManifest.xml:32:16-87
+permission#${applicationId}.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:24:5-109
+	android:protectionLevel
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:24:72-107
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:24:17-71
+uses-permission#${applicationId}.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:26:5-78
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:26:22-76
+receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
+ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:30:9-36:20
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:30:85-108
+	android:permission
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:30:109-169
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:30:19-84
+intent-filter#${applicationId}+com.google.android.c2dm.intent.RECEIVE+com.google.android.c2dm.intent.REGISTRATION
+ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:31:13-35:29
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:32:17-80
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:32:25-78
+action#com.google.android.c2dm.intent.REGISTRATION
+ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:33:17-85
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:33:25-83
+category#${applicationId}
+ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:34:17-60
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:34:27-58
+receiver#com.google.firebase.iid.FirebaseInstanceIdInternalReceiver
+ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:40:9-119
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:40:93-117
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:40:19-92
+service#com.google.firebase.iid.FirebaseInstanceIdService
+ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:44:9-48:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:44:83-106
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:44:18-82
+intent-filter#com.google.firebase.INSTANCE_ID_EVENT
+ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:45:13-47:29
+	android:priority
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:45:28-51
+action#com.google.firebase.INSTANCE_ID_EVENT
+ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:46:17-79
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/ipshamohanty/.android/build-cache/c585a9d8e27e59102250185db1ec88722f5d881b/output/AndroidManifest.xml:46:25-77
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:10.0.1] /Users/ipshamohanty/.android/build-cache/ceeb9d78fda779ef8a39ec21adc40712fecb7e66/output/AndroidManifest.xml:6:9-194
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:10.0.1] /Users/ipshamohanty/.android/build-cache/ceeb9d78fda779ef8a39ec21adc40712fecb7e66/output/AndroidManifest.xml:6:19-78
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:10.0.1] /Users/ipshamohanty/.android/build-cache/ceeb9d78fda779ef8a39ec21adc40712fecb7e66/output/AndroidManifest.xml:6:144-168
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:10.0.1] /Users/ipshamohanty/.android/build-cache/ceeb9d78fda779ef8a39ec21adc40712fecb7e66/output/AndroidManifest.xml:6:169-192
+	android:name
+		ADDED from [com.google.firebase:firebase-common:10.0.1] /Users/ipshamohanty/.android/build-cache/ceeb9d78fda779ef8a39ec21adc40712fecb7e66/output/AndroidManifest.xml:6:79-143

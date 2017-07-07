@@ -12,6 +12,8 @@ import android.widget.ImageView;
 
 import com.example.pedestrian.utils.GlobalUtils;
 
+import org.acra.ACRA;
+
 import java.io.File;
 
 public class Splash extends Activity {
@@ -24,7 +26,7 @@ public class Splash extends Activity {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-
+        ACRA.init(getApplication());
         setContentView(R.layout.activity_splash);
 
         try {
@@ -51,7 +53,7 @@ public class Splash extends Activity {
             @Override
             public void run() {
 
-                Intent mainIntent = new Intent(Splash.this, MapsActivity.class);
+                Intent mainIntent = new Intent(Splash.this, LoginActivity.class);
                 Splash.this.startActivity(mainIntent);
                 Splash.this.finish();
             }

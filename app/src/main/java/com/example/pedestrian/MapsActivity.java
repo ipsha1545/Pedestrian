@@ -11,90 +11,65 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.pedestrian.curl.Curl;
-import com.example.pedestrian.curl.EndPoints;
 import com.example.pedestrian.fragment.DataFromIOTFragment;
 import com.example.pedestrian.fragment.MyMapFragment;
 import com.example.pedestrian.fragment.SettingsFragment;
-import com.example.pedestrian.utils.DataFromIOT;
+import com.example.pedestrian.fragment.StaticsFragment;
 import com.example.pedestrian.utils.GlobalUtils;
 import com.example.pedestrian.utils.Preferences;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.maps.CameraUpdate;
-import com.google.android.gms.maps.CameraUpdateFactory;
+import com.facebook.Profile;
+import com.facebook.login.LoginManager;
+import com.facebook.login.widget.ProfilePictureView;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Polyline;
-import com.google.android.gms.maps.model.PolylineOptions;
-import com.google.android.gms.maps.model.TileOverlayOptions;
-import com.google.gson.Gson;
-import com.google.maps.android.PolyUtil;
-import com.google.maps.android.heatmaps.HeatmapTileProvider;
+import com.google.firebase.auth.FirebaseAuth;
+import com.squareup.picasso.Picasso;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.w3c.dom.Document;
-
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.StringTokenizer;
+
+import static com.example.pedestrian.R.id.tv_email;
+import static com.facebook.Profile.getCurrentProfile;
 
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, LocationListener {
 
+
+
+    private FirebaseAuth firebaseAuth;
+
     private GoogleMap mMap;
+
+    private TextView username;
+
+    private FirebaseAuth mAuth;
+
+    private ImageView profilepic;
 
     LatLng latLngSrc, latLngDest;
     ArrayList<Crosswalks> crosswalks;
@@ -102,8 +77,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     ProgressDialog progressDialog;
 
     public static Context mContext;
-
-
 
     private Button find;
     String src2 = "", dest2 = "", src = "", dest = "";
@@ -135,15 +108,49 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Toolbar toolbar;
    // SupportMapFragment mapFragment;
     private FrameLayout container;
+    private ProfilePictureView friendProfilePicture;
 
     private BroadcastReceiver proximityReceiver;// = new ProximityReciever();
 
+    Button button;
+
+    SharedPreferences sharedpreferences;
+
+    ImageView iv_profile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Log.i("MainActivity", "Inside onCreate of class Mapsactivity");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation);
         container = (FrameLayout) findViewById(R.id.container);
-        //GlobalUtils.clearLogFile();
+
+        //For facebook authentication
+        iv_profile=(ImageView)findViewById(R.id.iv_profile);
+       // friendProfilePicture=(ProfilePictureView)findViewById(R.id.friendProfilePicture);
+
+        Log.i("Link","Trying to find link 2 inside MapsActivity method"+ getCurrentProfile().getId());
+
+        //friendProfilePicture.setProfileId(getCurrentProfile().getId());
+
+
+        username = (TextView)findViewById(tv_email);
+
+        Profile profile = getCurrentProfile();
+        Log.i("Link","Trying to find link 2 inside MapsActivity method");
+        String id = profile.getId();
+        Log.i("Link","Trying to find link 3 inside MapsActivity method");
+        String link = profile.getLinkUri().toString();
+        Log.i("Link",link);
+        //Profile profilepic = Profile.getCurrentProfile().getProfilePictureUri(200,200);
+        if (getCurrentProfile()!=null)
+        {
+            Log.i("Login", "ProfilePic url is inside MapsActivity method" + getCurrentProfile().getProfilePictureUri(200, 200));
+        }
+
+        Log.i("MainActivity", "Inside try of set Facebook data method");
 
         try {
 
@@ -156,8 +163,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             toolbar = (Toolbar) findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
+            toolbar.setTitle("Map");
             initNavigationDrawer();
-
 
             statusCheck();
 
@@ -340,6 +347,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     @Override
+    public void onBackPressed() {
+        //FirebaseAuth.getInstance().signOut();
+        LoginManager.getInstance().logOut();
+        startActivity(new Intent(MapsActivity.this, LoginActivity.class));
+
+    }
+
+    @Override
     public void onPause() {
         super.onPause();
         try {
@@ -370,6 +385,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             fragmentTransaction2.replace(R.id.container, new MyMapFragment()).commit();
 
                             drawerLayout.closeDrawers();
+                            toolbar.setTitle("Map");
                             break;
 
 
@@ -387,6 +403,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             FragmentTransaction fragmentTransaction3 = fragmentManager.beginTransaction();
                             fragmentTransaction3.replace(R.id.container, new DataFromIOTFragment()).commit();
                             drawerLayout.closeDrawers();
+                            toolbar.setTitle("Subscriber X Scan Count");
                             break;
 
 
@@ -397,6 +414,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         fragmentTransaction.replace(R.id.container,new MyMapFragment()).commit();*/
 
                             drawerLayout.closeDrawers();
+
+                            break;
+
+                        case R.id.statics :
+
+                            FragmentTransaction fragmentTransaction4 = fragmentManager.beginTransaction();
+                            fragmentTransaction4.replace(R.id.container, new StaticsFragment()).commit();
+
+                            drawerLayout.closeDrawers();
+                            toolbar.setTitle("Statics");
                             break;
 
                         case R.id.settings:
@@ -406,6 +433,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             fragmentTransaction1.replace(R.id.container, new SettingsFragment()).commit();
 
                             drawerLayout.closeDrawers();
+                            toolbar.setTitle("Settings");
+                            break;
+
+                        case R.id.logout:
+                            //Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
+                            //FirebaseAuth.getInstance().signOut();
+
+                            drawerLayout.closeDrawers();
+                            LoginManager.getInstance().logOut();
+                            startActivity(new Intent(MapsActivity.this, LoginActivity.class));
                             break;
 
                     }
@@ -415,8 +452,55 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
             View header = navigationView.getHeaderView(0);
-            TextView tv_email = (TextView) header.findViewById(R.id.tv_email);
-            tv_email.setText("xyz user");
+
+            Log.i("MainActivity", "In 1 class Mapsactivity before setText");
+            //TextView tv_email = (TextView) header.findViewById(tv_email);
+
+            //tv_email.setText(Preferences.getUserName());
+
+            SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+
+            Log.i("MainActivity", "In 2 class Mapsactivity before setText");
+
+            //username = (TextView) header.findViewById(tv_email);
+            String name = loginData.getString("userName", "");
+
+            Log.i("MainActivity", "In 3 class Mapsactivity before setText");
+
+            //name is being set here
+           // username.setText(name);
+
+            Log.i("MainActivity", "In 4 class Mapsactivity before setText" + Preferences.getUserImage());
+
+            //profile pic being set here
+           /* Picasso.with(this).load(Preferences.getUserImage())
+                    .resize(300, 300).centerCrop().into(iv_profile);*/
+
+
+            Log.i("MainActivity", "Inside class Mapsactivity after setText" + Preferences.getUserImage() );
+
+
+            //name is being set here
+
+
+            System.out.println("username" + username);
+
+
+            System.out.printf("Hello...getting preferences for username");
+
+            ImageView iv_profile = (ImageView) header.findViewById(R.id.iv_profile);
+
+
+           // Log.i("MainActivity", "iv_profile" + iv_profile );
+
+            if (!Preferences.getUserImage().equalsIgnoreCase(""))
+
+                Picasso.with(this).load(Preferences.getUserImage())
+                    .resize(300, 300).centerCrop().into(iv_profile);
+
+            Log.e("Maps activity"," After getting user image in maps activity:" + Preferences.getUserImage());
+
+
             drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
 
             ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
@@ -438,7 +522,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             GlobalUtils.writeLogFile("Exception in initNavigation Drawer " + e.getMessage());
         }
     }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

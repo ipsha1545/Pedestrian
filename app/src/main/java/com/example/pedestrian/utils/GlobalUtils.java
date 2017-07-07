@@ -200,7 +200,8 @@ public class GlobalUtils {
             }
 
         }catch (Exception e){
-            Toast.makeText(MapsActivity.mContext, "File not found", Toast.LENGTH_SHORT).show();
+            //Deepak code
+            //Toast.makeText(MapsActivity.mContext, "File not found", Toast.LENGTH_SHORT).show();
         }
 
         return crosswalkses;

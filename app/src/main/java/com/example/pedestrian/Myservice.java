@@ -10,6 +10,7 @@ import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 
+import com.example.pedestrian.utils.AppConstants;
 import com.example.pedestrian.utils.DataFromIOT;
 import com.example.pedestrian.utils.DataToServer;
 import com.example.pedestrian.utils.GlobalUtils;
@@ -116,6 +117,7 @@ class AcceptThreadtest extends Thread {
             dataToServer.setLatitude(latitude+"");
             dataToServer.setConnectedCount(dataFromIOT.getDevicesCount());
             dataToServer.setTimeStamp(dataFromIOT.getTimeStamp());
+            dataToServer.setUserId(Preferences.getUserId());
 
             Gson gson = new Gson();
 
@@ -126,7 +128,12 @@ class AcceptThreadtest extends Thread {
             URL url = null;
 
             try {
-                url = new URL("http://rsin-nisbnvm.india.rsystems.com/DemoAPI/api/device");
+                url = new URL(AppConstants.BaseURL + "/api/device");
+              /*  if (Preferences.getSettingsParam("Radio").equalsIgnoreCase("All")){
+
+                }else if (Preferences.getSettingsParam("Radio").equalsIgnoreCase("Individual")){
+                    url = new URL(AppConstants.BaseURL + "/api/device" + "/" + Preferences.getUserId());
+                }*/
             } catch (MalformedURLException e1) {
                 e1.printStackTrace();
             }

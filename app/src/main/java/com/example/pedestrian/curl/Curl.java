@@ -59,7 +59,7 @@ public class Curl {
 	}
 	
 	public static String getInSeparateThread(String url) {
-		GetAsyncTask async = new GetAsyncTask();
+ 		GetAsyncTask async = new GetAsyncTask();
 		async.execute(url);
 		while (!async.isDone()){
 			try {

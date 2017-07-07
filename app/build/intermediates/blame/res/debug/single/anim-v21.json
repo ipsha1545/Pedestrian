@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/ipshamohanty/Downloads/Pedestrian/app/build/intermediates/res/merged/debug/anim-v21/design_appbar_state_list_animator.xml",
+        "source": "/Users/ipshamohanty/.android/build-cache/efb276c7b9080927b6d2d12350c2d009bfaf846d/output/res/anim-v21/design_appbar_state_list_animator.xml"
+    },
+    {
+        "merged": "/Users/ipshamohanty/Downloads/Pedestrian/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_in.xml",
+        "source": "/Users/ipshamohanty/.android/build-cache/efb276c7b9080927b6d2d12350c2d009bfaf846d/output/res/anim-v21/design_bottom_sheet_slide_in.xml"
+    },
+    {
+        "merged": "/Users/ipshamohanty/Downloads/Pedestrian/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_out.xml",
+        "source": "/Users/ipshamohanty/.android/build-cache/efb276c7b9080927b6d2d12350c2d009bfaf846d/output/res/anim-v21/design_bottom_sheet_slide_out.xml"
+    }
+]

@@ -25,6 +25,11 @@ public class DataToServer {
     @Expose
     private String timeStamp;
 
+
+    @SerializedName("userId")
+    @Expose
+    private int userId;
+
     /**
      *
      * @return
@@ -134,4 +139,12 @@ public class DataToServer {
         this.connectedCount = connectedCount;
     }
 
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 }

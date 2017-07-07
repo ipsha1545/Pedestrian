@@ -4,4 +4,13 @@
 
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+
+
+    <string name="err_msg_login_id">Please enter Login id</string>
+    <string name="err_msg_password">Please enter Password</string>
+
+    <string name="facebook_app_id">680433805478091</string>
+
+
+
 </resources>
