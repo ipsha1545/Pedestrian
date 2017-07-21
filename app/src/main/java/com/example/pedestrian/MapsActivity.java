@@ -131,7 +131,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         iv_profile=(ImageView)findViewById(R.id.iv_profile);
        // friendProfilePicture=(ProfilePictureView)findViewById(R.id.friendProfilePicture);
 
-        Log.i("Link","Trying to find link 2 inside MapsActivity method"+ getCurrentProfile().getId());
+        Log.i("Link","Trying to find link 2 inside MapsActivity method"+ getCurrentProfile().getName());
 
         //friendProfilePicture.setProfileId(getCurrentProfile().getId());
 
@@ -139,18 +139,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         username = (TextView)findViewById(tv_email);
 
         Profile profile = getCurrentProfile();
-        Log.i("Link","Trying to find link 2 inside MapsActivity method");
         String id = profile.getId();
-        Log.i("Link","Trying to find link 3 inside MapsActivity method");
         String link = profile.getLinkUri().toString();
-        Log.i("Link",link);
         //Profile profilepic = Profile.getCurrentProfile().getProfilePictureUri(200,200);
         if (getCurrentProfile()!=null)
         {
             Log.i("Login", "ProfilePic url is inside MapsActivity method" + getCurrentProfile().getProfilePictureUri(200, 200));
         }
 
-        Log.i("MainActivity", "Inside try of set Facebook data method");
 
         try {
 
@@ -451,54 +447,23 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             });
 
 
-            View header = navigationView.getHeaderView(0);
-
-            Log.i("MainActivity", "In 1 class Mapsactivity before setText");
-            //TextView tv_email = (TextView) header.findViewById(tv_email);
-
-            //tv_email.setText(Preferences.getUserName());
-
             SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
-
-            Log.i("MainActivity", "In 2 class Mapsactivity before setText");
-
-            //username = (TextView) header.findViewById(tv_email);
             String name = loginData.getString("userName", "");
-
-            Log.i("MainActivity", "In 3 class Mapsactivity before setText");
-
-            //name is being set here
-           // username.setText(name);
-
-            Log.i("MainActivity", "In 4 class Mapsactivity before setText" + Preferences.getUserImage());
-
-            //profile pic being set here
-           /* Picasso.with(this).load(Preferences.getUserImage())
-                    .resize(300, 300).centerCrop().into(iv_profile);*/
+            System.out.printf("Hello...getting preferences for username" + Preferences.getUserName());
 
 
-            Log.i("MainActivity", "Inside class Mapsactivity after setText" + Preferences.getUserImage() );
+            View header = navigationView.getHeaderView(0);
+            TextView tv_email = (TextView) header.findViewById(R.id.tv_email);
+            tv_email.setText(Preferences.getUserName());
 
-
-            //name is being set here
-
-
-            System.out.println("username" + username);
-
-
-            System.out.printf("Hello...getting preferences for username");
 
             ImageView iv_profile = (ImageView) header.findViewById(R.id.iv_profile);
 
 
-           // Log.i("MainActivity", "iv_profile" + iv_profile );
-
             if (!Preferences.getUserImage().equalsIgnoreCase(""))
 
                 Picasso.with(this).load(Preferences.getUserImage())
-                    .resize(300, 300).centerCrop().into(iv_profile);
-
-            Log.e("Maps activity"," After getting user image in maps activity:" + Preferences.getUserImage());
+                    .resize(100, 100).centerCrop().into(iv_profile);
 
 
             drawerLayout = (DrawerLayout) findViewById(R.id.drawer);

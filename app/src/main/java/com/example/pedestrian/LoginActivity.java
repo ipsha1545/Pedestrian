@@ -91,28 +91,18 @@ public class LoginActivity extends AppCompatActivity implements
         et_loginId = (EditText) findViewById(R.id.et_loginId);
         et_password = (EditText) findViewById(R.id.et_password);
 
-
-        //et
-        /*loginButton = (LoginButton)findViewById(R.id.login_button);
-        username = (LoginButton)findViewById(R.id.tv_email);*/
-
         data = (TextView) findViewById(R.id.data);
         //textView = (TextView)findViewById(R.id.textView);
         callbackManager = CallbackManager.Factory.create();
 
-
+        loginButton = (LoginButton)findViewById(R.id.login_button);
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
 
     @Override
     public void onSuccess(LoginResult loginResult) {
         Log.d(TAG, "facebook:onSuccess:" + loginResult);
-        //Log.d("onSuccess", "Just above the line of setFacebook data");
+
         setFacebookData(loginResult);
-        //String email = response.getJSONObject().getString("email");
-        //submitGmailLogin(Profile.getCurrentProfile().ge,id,Profile.getCurrentProfile().getProfilePictureUri(200, 200).toString());
-
-
-        //Log.d("onSuccess", "Just below the line of setFacebook data");
 
     }
 
@@ -207,72 +197,23 @@ public class LoginActivity extends AppCompatActivity implements
                         // Application code
                         try {
 
-                            Log.i("Link","Trying to find profile");
-
                             Profile profile = Profile.getCurrentProfile();
-                            Log.i("Link","Trying to find link 2");
-                            Log.i("Link",profile.getId());
                             String id = profile.getId();
-                            System.out.println("id" + id);
-                            Log.i("Link","Trying to find link 3");
+
                             String link = profile.getLinkUri().toString();
                             Log.i("Link",link);
-                            //Profile profilepic = Profile.getCurrentProfile().getProfilePictureUri(200,200);
+
                             if (Profile.getCurrentProfile()!=null)
                             {
                                 Log.i("Login", "ProfilePic url is " + Profile.getCurrentProfile().getProfilePictureUri(200, 200));
                             }
-
-                            Log.i("MainActivity", "Inside try of set Facebook data method");
-
-                            Log.i("Response",response.toString());
 
                             String email = response.getJSONObject().getString("email");
                             String firstName = response.getJSONObject().getString("first_name");
                             String lastName = response.getJSONObject().getString("last_name");
                             String gender = response.getJSONObject().getString("gender");
 
-
-                            System.out.println("email" + email);
-                            System.out.println("id" + id);
-                            System.out.println("uri" + Profile.getCurrentProfile().getProfilePictureUri(200, 200).toString());
-
-
-                            Log.i("Link","Trying to find link 0");
-
-                            System.out.println("email" + email);
-                            System.out.println("firstname" + firstName);
-                            System.out.println("lastname" + lastName);
-
-                            Log.i("Link","Trying to find link 1");
-
-
-                            Log.i("Login" + "Email", email);
-                            Log.i("Login"+ "FirstName", firstName);
-                            Log.i("Login" + "LastName", lastName);
-                            Log.i("Login" + "Gender", id);
-
                             submitFacebookLogin(email,id,Profile.getCurrentProfile().getProfilePictureUri(200, 200).toString());
-
-
-                           /* SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
-                            SharedPreferences.Editor editor = loginData.edit();
-                            //editor.putString("userName", email);
-                            //editor.putString("password", password.getText().toString());
-                            editor.apply();*/
-
-
-                            /*Toast.makeText(LoginActivity.this,
-                                    "All details which you enetered were saved", Toast.LENGTH_LONG).show();
-
-                            //Log.i("Login" + "Email", email);
-
-                            String name = loginData.getString("userName", "");
-                            data.setText(name);
-
-                            System.out.println("username" + username);
-                            System.out.println("id" + username);*/
-
 
                             Intent mainIntent = new Intent(LoginActivity.this, MapsActivity.class);
                             startActivity(mainIntent);
@@ -397,9 +338,7 @@ public class LoginActivity extends AppCompatActivity implements
                 JSONObject jsonObject = new JSONObject(response.toString());
                 Preferences.setUserId(jsonObject.getInt("userId"));
                 Preferences.setUserName(loginID);
-                //Log.e(TAG," Before setting user image:");
                 Preferences.setUserImage("");
-                //Log.e(TAG," After setting user image:");
                 Intent mainIntent = new Intent(LoginActivity.this, MapsActivity.class);
                 startActivity(mainIntent);
                 finish();
@@ -445,6 +384,7 @@ public class LoginActivity extends AppCompatActivity implements
 
 
     private void submitFacebookLogin(String username, String accountID, String imageUrl) {
+        Log.e("entering","Enterig fblogin");
         String response = Curl.getInSeparateThread(AppConstants.BaseURL + "/login?" +"loginId=" + username.replaceAll(" ","") + "&password="+ accountID + "&source=" + Integer.parseInt("1"));
 
         try {
@@ -455,9 +395,9 @@ public class LoginActivity extends AppCompatActivity implements
                 Preferences.setUserId(jsonObject.getInt("userId"));
                 Preferences.setUserName(username);
 
-                Log.e(TAG," Before setting user image:");
+                Log.e("username","username" + Preferences.getUserName());
                 Preferences.setUserImage(imageUrl);
-                Log.e(TAG," After setting user image:" + imageUrl);
+
 
                 Intent mainIntent = new Intent(LoginActivity.this, MapsActivity.class);
                 startActivity(mainIntent);
@@ -518,9 +458,7 @@ public class LoginActivity extends AppCompatActivity implements
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        // p FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI();
+
     }
 
 

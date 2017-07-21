@@ -80,14 +80,7 @@ public class Preferences {
 		editor.commit();
 	}
 
-	public static void setUserNamefb(String userName) {
-		SharedPreferences settings = getPreferences();
-		SharedPreferences.Editor editor = settings.edit();
-		editor.putString("userNamefb", userName);
-		editor.commit();
-	}
-
-	public static String getUserNamefb() {
+	public static String getUserName() {
 		SharedPreferences settings = getPreferences();
 		return settings.getString("userNamefb", "");
 	}

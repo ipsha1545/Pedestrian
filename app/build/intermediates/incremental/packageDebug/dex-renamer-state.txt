@@ -1,0 +1,7 @@
+#Wed Jul 12 19:43:31 PDT 2017
+base.0=/Users/ipshamohanty/Downloads/Pedestrian/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_408eed1cc589898f46c29281ececd1cfa47d91dc
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=/Users/ipshamohanty/Downloads/Pedestrian/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_d9d085f1509b0069b6e484b542198961d339194a/classes.dex
+base.1=/Users/ipshamohanty/Downloads/Pedestrian/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_d9d085f1509b0069b6e484b542198961d339194a
+file.0=/Users/ipshamohanty/Downloads/Pedestrian/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_408eed1cc589898f46c29281ececd1cfa47d91dc/classes.dex
